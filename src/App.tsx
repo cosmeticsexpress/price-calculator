@@ -1,6 +1,7 @@
 import './App.css';
 import CalculatorBlock from './CalculatorBlock';
 import { smallAreasStates, largeAreasStates, allBodyStates } from './states';
+
 export default function App() {
   const calculatorTitles = [
     {

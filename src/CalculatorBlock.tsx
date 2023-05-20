@@ -1,5 +1,6 @@
 import { useRecoilValue, RecoilState } from 'recoil';
 import SliderGroup from './SliderGroup';
+import TextFieldGroup from './TextFieldGroup';
 
 interface ICalculatorBlockProps {
   title?: string;
@@ -20,8 +21,6 @@ export default function CalculatorBlock({
 }: ICalculatorBlockProps) {
   const { appointmentDurationState, appointmentPriceState, workingHoursState } =
     states;
-
-  const appointmentPrice = useRecoilValue(appointmentPriceState);
 
   const sliderGroupProps = [
     {
@@ -44,25 +43,6 @@ export default function CalculatorBlock({
     },
   ];
 
-  const textFieldLabels = [
-    {
-      label: 'רווח מטיפול יחיד',
-      value: `₪${appointmentPrice}`,
-    },
-    {
-      label: 'רווח מיום עבודה',
-      value: '',
-    },
-    {
-      label: 'ימי עבודה חודשיים',
-      value: DAYS_IN_MONTH,
-    },
-    {
-      label: 'רווח מחודש עבודה',
-      value: DAYS_IN_MONTH * 100,
-    },
-  ];
-
   return (
     <section>
       <h2>{title}</h2>
@@ -72,15 +52,10 @@ export default function CalculatorBlock({
       </div>
 
       <div style={{ display: 'grid' }}>
-        {textFieldLabels.map(({ label, value }) => (
-          <div
-            style={{ display: 'flex', justifyContent: 'space-between' }}
-            key={crypto.randomUUID()}
-          >
-            <span>{label}</span>
-            <input type='text' readOnly value={value} />
-          </div>
-        ))}
+        <TextFieldGroup
+          workingHoursState={workingHoursState}
+          appointmentPriceState={appointmentPriceState}
+        />
       </div>
     </section>
   );
