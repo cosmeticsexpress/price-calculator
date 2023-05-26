@@ -1,13 +1,7 @@
-import { useRecoilValue } from 'recoil';
 import './App.css';
 import CalculatorBlock from './CalculatorBlock';
-import ReadonlyTextField from './ReadonlyTextField';
-import {
-  smallAreasStates,
-  largeAreasStates,
-  allBodyStates,
-  totalMonthEarningsState,
-} from './states';
+import MonthlyEarningsDisplay from './MonthlyEarningsDisplay';
+import { smallAreasStates, largeAreasStates, allBodyStates } from './states';
 
 export default function App() {
   const calculatorTitles = [
@@ -28,7 +22,6 @@ export default function App() {
     },
   ];
 
-  const totalMonthEarnings = useRecoilValue(totalMonthEarningsState);
   return (
     <>
       {calculatorTitles.map(({ title, subtitle, states }) => (
@@ -39,10 +32,7 @@ export default function App() {
           key={crypto.randomUUID()}
         />
       ))}
-      <div>
-        <span>סה״כ רווח חודשי</span>
-        <ReadonlyTextField value={totalMonthEarnings} />
-      </div>
+      <MonthlyEarningsDisplay />
     </>
   );
 }
