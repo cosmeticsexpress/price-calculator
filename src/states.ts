@@ -1,4 +1,18 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
+
+export const monthWorkdays = 25;
+
+/**
+  (תמחור לטיפול  *  זמן עבודה לטיפול)
+  / 60
+  * שעות עבודה
+  = רווח מיום עבודה
+
+  (appointmentPrice * appointmentDuration)
+  / 60
+  * workingHours
+  = dayEarnings
+*/
 
 export const smallAreasStates = {
   appointmentDurationState: atom({
@@ -12,6 +26,27 @@ export const smallAreasStates = {
   workingHoursState: atom({
     key: 'smallAreas_workingHoursState',
     default: 1,
+  }),
+  dayEarningsState: selector({
+    key: 'smallAreas_dayEarningsState',
+    get: ({ get }) => {
+      const appointmentPrice: number = get(
+          smallAreasStates.appointmentDurationState
+        ),
+        appointmentDuration: number = get(
+          smallAreasStates.appointmentPriceState
+        ),
+        workingHours: number = get(smallAreasStates.workingHoursState);
+
+      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+    },
+  }),
+  monthEarningsState: selector({
+    key: 'smallAreas_monthEarningsState',
+    get: ({ get }) => {
+      const dayEarnings: number = get(smallAreasStates.dayEarningsState);
+      return dayEarnings * monthWorkdays;
+    },
   }),
 };
 
@@ -28,6 +63,27 @@ export const largeAreasStates = {
     key: 'largeAreas_workingHoursState',
     default: 1,
   }),
+  dayEarningsState: selector({
+    key: 'largeAreas_dayEarningsState',
+    get: ({ get }) => {
+      const appointmentPrice: number = get(
+          largeAreasStates.appointmentDurationState
+        ),
+        appointmentDuration: number = get(
+          largeAreasStates.appointmentPriceState
+        ),
+        workingHours: number = get(largeAreasStates.workingHoursState);
+
+      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+    },
+  }),
+  monthEarningsState: selector({
+    key: 'largeAreas_monthEarningsState',
+    get: ({ get }) => {
+      const dayEarnings: number = get(largeAreasStates.dayEarningsState);
+      return dayEarnings * monthWorkdays;
+    },
+  }),
 };
 
 export const allBodyStates = {
@@ -43,4 +99,34 @@ export const allBodyStates = {
     key: 'allBody_workingHoursState',
     default: 1,
   }),
+  dayEarningsState: selector({
+    key: 'allBody_dayEarningsState',
+    get: ({ get }) => {
+      const appointmentPrice: number = get(
+          allBodyStates.appointmentDurationState
+        ),
+        appointmentDuration: number = get(allBodyStates.appointmentPriceState),
+        workingHours: number = get(allBodyStates.workingHoursState);
+
+      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+    },
+  }),
+  monthEarningsState: selector({
+    key: 'allBody_monthEarningsState',
+    get: ({ get }) => {
+      const dayEarnings: number = get(allBodyStates.dayEarningsState);
+      return dayEarnings * monthWorkdays;
+    },
+  }),
 };
+
+export const totalMonthEarningsState = selector({
+  key: 'totalMonthEarnings',
+  get: ({ get }) => {
+    return (
+      get(smallAreasStates.monthEarningsState) +
+      get(largeAreasStates.monthEarningsState) +
+      get(allBodyStates.monthEarningsState)
+    );
+  },
+});

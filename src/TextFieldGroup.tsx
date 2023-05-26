@@ -1,17 +1,23 @@
-import { useRecoilValue, RecoilState } from 'recoil';
+import { useRecoilValue, RecoilState, RecoilValue } from 'recoil';
 import ReadonlyTextField from './ReadonlyTextField';
+import { monthWorkdays } from './states';
 
 export default function TextFieldGroup({
   appointmentPriceState,
-  workingHoursState,
+  dayEarningsState,
+  monthEarningsState,
 }: {
   appointmentPriceState: RecoilState<number>;
-  workingHoursState: RecoilState<number>;
+  dayEarningsState: RecoilValue<number>;
+  monthEarningsState: RecoilValue<number>;
 }) {
-  const workdaysInMonth = 25;
   const appointmentPrice = useRecoilValue(appointmentPriceState);
-  const workingHours = useRecoilValue(workingHoursState);
-  const dayEarnings = appointmentPrice * workingHours;
+  const dayEarnings = useRecoilValue(dayEarningsState);
+  const monthEarnings = useRecoilValue(monthEarningsState);
+
+  const format = new Intl.NumberFormat(undefined, {
+    maximumFractionDigits: 2,
+  }).format;
 
   return (
     <>
@@ -27,21 +33,21 @@ export default function TextFieldGroup({
         key={crypto.randomUUID()}
       >
         <span>רווח מיום עבודה</span>
-        <ReadonlyTextField value={dayEarnings} />
+        <ReadonlyTextField value={format(dayEarnings)} />
       </div>
       <div
         style={{ display: 'flex', justifyContent: 'space-between' }}
         key={crypto.randomUUID()}
       >
         <span>ימי עבודה חודשיים</span>
-        <ReadonlyTextField value={workdaysInMonth} />
+        <ReadonlyTextField value={monthWorkdays} />
       </div>
       <div
         style={{ display: 'flex', justifyContent: 'space-between' }}
         key={crypto.randomUUID()}
       >
         <span>רווח מחודש עבודה</span>
-        <ReadonlyTextField value={dayEarnings * workdaysInMonth} />
+        <ReadonlyTextField value={format(monthEarnings)} />
       </div>
     </>
   );

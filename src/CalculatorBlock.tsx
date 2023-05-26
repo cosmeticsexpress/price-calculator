@@ -1,4 +1,4 @@
-import { useRecoilValue, RecoilState } from 'recoil';
+import { RecoilState, RecoilValueReadOnly } from 'recoil';
 import SliderGroup from './SliderGroup';
 import TextFieldGroup from './TextFieldGroup';
 
@@ -9,18 +9,23 @@ interface ICalculatorBlockProps {
     appointmentDurationState: RecoilState<number>;
     appointmentPriceState: RecoilState<number>;
     workingHoursState: RecoilState<number>;
+    dayEarningsState: RecoilValueReadOnly<number>;
+    monthEarningsState: RecoilValueReadOnly<number>;
   };
 }
-
-const DAYS_IN_MONTH = 25;
 
 export default function CalculatorBlock({
   title,
   subtitle,
   states,
 }: ICalculatorBlockProps) {
-  const { appointmentDurationState, appointmentPriceState, workingHoursState } =
-    states;
+  const {
+    appointmentDurationState,
+    appointmentPriceState,
+    workingHoursState,
+    dayEarningsState,
+    monthEarningsState,
+  } = states;
 
   const sliderGroupProps = [
     {
@@ -53,8 +58,9 @@ export default function CalculatorBlock({
 
       <div style={{ display: 'grid' }}>
         <TextFieldGroup
-          workingHoursState={workingHoursState}
           appointmentPriceState={appointmentPriceState}
+          dayEarningsState={dayEarningsState}
+          monthEarningsState={monthEarningsState}
         />
       </div>
     </section>
