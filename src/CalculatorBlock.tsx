@@ -12,12 +12,23 @@ interface ICalculatorBlockProps {
     dayEarningsState: RecoilValueReadOnly<number>;
     monthEarningsState: RecoilValueReadOnly<number>;
   };
+  sliderRanges: {
+    appointmentDuration: {
+      min: number;
+      max: number;
+    };
+    appointmentPrice: {
+      min: number;
+      max: number;
+    };
+  };
 }
 
 export default function CalculatorBlock({
   title,
   subtitle,
   states,
+  sliderRanges,
 }: ICalculatorBlockProps) {
   const {
     appointmentDurationState,
@@ -27,23 +38,25 @@ export default function CalculatorBlock({
     monthEarningsState,
   } = states;
 
+  const { appointmentDuration, appointmentPrice } = sliderRanges;
+
   const sliderGroupProps = [
     {
       label: 'זמן עבודה לטיפול',
-      min: 5,
-      max: 20,
+      min: appointmentDuration.min,
+      max: appointmentDuration.max,
       state: appointmentDurationState,
     },
     {
       label: 'תמחור לטיפול בודד',
-      min: 100,
-      max: 1000,
+      min: appointmentPrice.min,
+      max: appointmentPrice.max,
       state: appointmentPriceState,
     },
     {
       label: 'שעות עבודה יומיות',
-      min: 1,
-      max: 20,
+      min: 2,
+      max: 8,
       state: workingHoursState,
     },
   ];
