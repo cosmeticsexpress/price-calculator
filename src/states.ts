@@ -14,6 +14,12 @@ export const monthWorkdays = 25;
   = dayEarnings
 */
 
+const getDayEarnings = (
+  appointmentDuration: number,
+  appointmentPrice: number,
+  workingHours: number
+) => (60 / appointmentDuration) * appointmentPrice * workingHours;
+
 export const smallAreasStates = {
   appointmentDurationState: atom({
     key: 'smallAreas_appointmentDurationState',
@@ -38,7 +44,11 @@ export const smallAreasStates = {
         ),
         workingHours: number = get(smallAreasStates.workingHoursState);
 
-      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+      return getDayEarnings(
+        appointmentPrice,
+        appointmentDuration,
+        workingHours
+      );
     },
   }),
   monthEarningsState: selector({
@@ -74,7 +84,11 @@ export const largeAreasStates = {
         ),
         workingHours: number = get(largeAreasStates.workingHoursState);
 
-      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+      return getDayEarnings(
+        appointmentPrice,
+        appointmentDuration,
+        workingHours
+      );
     },
   }),
   monthEarningsState: selector({
@@ -108,7 +122,11 @@ export const allBodyStates = {
         appointmentDuration: number = get(allBodyStates.appointmentPriceState),
         workingHours: number = get(allBodyStates.workingHoursState);
 
-      return ((appointmentPrice * appointmentDuration) / 60) * workingHours;
+      return getDayEarnings(
+        appointmentPrice,
+        appointmentDuration,
+        workingHours
+      );
     },
   }),
   monthEarningsState: selector({
