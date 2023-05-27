@@ -9,9 +9,9 @@ interface ISliderProps {
 export default function Slider({ min, max, state }: ISliderProps) {
   const [value, setValue] = useRecoilState(state);
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='flex'>
       <input
-        style={{ width: '100%' }}
+        className='w-full'
         type='range'
         min={min}
         max={max}

@@ -7,7 +7,7 @@ import {
 } from '@utils/states';
 
 export default function App() {
-  const calculatorTitles = [
+  const calculatorProps = [
     {
       title: 'אזורים קטנים',
       subtitle: 'פנים ▪ מפשעות ▪ בית שחי',
@@ -62,7 +62,7 @@ export default function App() {
         <h2 className='font-semibold text-3xl'>לטיפולי הסרת שיער בלייזר</h2>
       </div>
       <div className='flex gap-4'>
-        {calculatorTitles.map(({ title, subtitle, states, sliderRanges }) => (
+        {calculatorProps.map(({ title, subtitle, states, sliderRanges }) => (
           <CalculatorBlock
             key={crypto.randomUUID()}
             title={title}

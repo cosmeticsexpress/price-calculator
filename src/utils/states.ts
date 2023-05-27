@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { RecoilState, RecoilValueReadOnly, atom, selector } from 'recoil';
 
 export const monthWorkdays = 25;
 
@@ -7,17 +7,62 @@ export const monthWorkdaysState = selector({
   get: () => monthWorkdays,
 });
 
-/**
-  (תמחור לטיפול  *  זמן עבודה לטיפול)
-  / 60
-  * שעות עבודה
-  = רווח מיום עבודה
+class CalculatorGroupStates {
+  private stateKey: string = '';
 
-  (appointmentPrice * appointmentDuration)
-  / 60
-  * workingHours
-  = dayEarnings
-*/
+  appointmentDurationState: RecoilState<number>;
+  appointmentPriceState: RecoilState<number>;
+  workingHoursState: RecoilState<number>;
+
+  dayEarningsState: RecoilValueReadOnly<number>;
+  monthEarningsState: RecoilValueReadOnly<number>;
+
+  constructor(
+    stateKey: string = '',
+    appointmentDuration: number,
+    appointmentPrice: number
+  ) {
+    this.stateKey = stateKey;
+
+    this.appointmentDurationState = atom({
+      key: `${this.stateKey}_appointmentDurationState`,
+      default: appointmentDuration,
+    });
+
+    this.appointmentPriceState = atom({
+      key: `${this.stateKey}_appointmentPriceState`,
+      default: appointmentPrice,
+    });
+
+    this.workingHoursState = atom({
+      key: `${this.stateKey}_workingHoursState`,
+      default: 2,
+    });
+
+    this.dayEarningsState = selector({
+      key: `${this.stateKey}_dayEarningsState`,
+      get: ({ get }) => {
+        const appointmentPrice: number = get(this.appointmentDurationState),
+          appointmentDuration: number = get(this.appointmentPriceState),
+          workingHours: number = get(this.workingHoursState);
+
+        return getDayEarnings(
+          appointmentPrice,
+          appointmentDuration,
+          workingHours
+        );
+      },
+    });
+
+    this.monthEarningsState = selector({
+      key: `${this.stateKey}_monthEarningsState`,
+      get: ({ get }) => {
+        const dayEarnings: number = get(this.dayEarningsState);
+        return dayEarnings * monthWorkdays;
+      },
+    });
+  }
+}
 
 const getDayEarnings = (
   appointmentDuration: number,
@@ -25,123 +70,15 @@ const getDayEarnings = (
   workingHours: number
 ) => (60 / appointmentDuration) * appointmentPrice * workingHours;
 
-export const smallAreasStates = {
-  appointmentDurationState: atom({
-    key: 'smallAreas_appointmentDurationState',
-    default: 5,
-  }),
-  appointmentPriceState: atom({
-    key: 'smallAreas_appointmentPriceState',
-    default: 100,
-  }),
-  workingHoursState: atom({
-    key: 'smallAreas_workingHoursState',
-    default: 1,
-  }),
-  dayEarningsState: selector({
-    key: 'smallAreas_dayEarningsState',
-    get: ({ get }) => {
-      const appointmentPrice: number = get(
-          smallAreasStates.appointmentDurationState
-        ),
-        appointmentDuration: number = get(
-          smallAreasStates.appointmentPriceState
-        ),
-        workingHours: number = get(smallAreasStates.workingHoursState);
+export const smallAreasStates = new CalculatorGroupStates('smallAreas', 5, 100);
 
-      return getDayEarnings(
-        appointmentPrice,
-        appointmentDuration,
-        workingHours
-      );
-    },
-  }),
-  monthEarningsState: selector({
-    key: 'smallAreas_monthEarningsState',
-    get: ({ get }) => {
-      const dayEarnings: number = get(smallAreasStates.dayEarningsState);
-      return dayEarnings * monthWorkdays;
-    },
-  }),
-};
+export const largeAreasStates = new CalculatorGroupStates(
+  'largeAreas',
+  15,
+  200
+);
 
-export const largeAreasStates = {
-  appointmentDurationState: atom({
-    key: 'largeAreas_appointmentDurationState',
-    default: 5,
-  }),
-  appointmentPriceState: atom({
-    key: 'largeAreas_appointmentPriceState',
-    default: 100,
-  }),
-  workingHoursState: atom({
-    key: 'largeAreas_workingHoursState',
-    default: 1,
-  }),
-  dayEarningsState: selector({
-    key: 'largeAreas_dayEarningsState',
-    get: ({ get }) => {
-      const appointmentPrice: number = get(
-          largeAreasStates.appointmentDurationState
-        ),
-        appointmentDuration: number = get(
-          largeAreasStates.appointmentPriceState
-        ),
-        workingHours: number = get(largeAreasStates.workingHoursState);
-
-      return getDayEarnings(
-        appointmentPrice,
-        appointmentDuration,
-        workingHours
-      );
-    },
-  }),
-  monthEarningsState: selector({
-    key: 'largeAreas_monthEarningsState',
-    get: ({ get }) => {
-      const dayEarnings: number = get(largeAreasStates.dayEarningsState);
-      return dayEarnings * monthWorkdays;
-    },
-  }),
-};
-
-export const allBodyStates = {
-  appointmentDurationState: atom({
-    key: 'allBody_appointmentDurationState',
-    default: 5,
-  }),
-  appointmentPriceState: atom({
-    key: 'allBody_appointmentPriceState',
-    default: 100,
-  }),
-  workingHoursState: atom({
-    key: 'allBody_workingHoursState',
-    default: 1,
-  }),
-  dayEarningsState: selector({
-    key: 'allBody_dayEarningsState',
-    get: ({ get }) => {
-      const appointmentPrice: number = get(
-          allBodyStates.appointmentDurationState
-        ),
-        appointmentDuration: number = get(allBodyStates.appointmentPriceState),
-        workingHours: number = get(allBodyStates.workingHoursState);
-
-      return getDayEarnings(
-        appointmentPrice,
-        appointmentDuration,
-        workingHours
-      );
-    },
-  }),
-  monthEarningsState: selector({
-    key: 'allBody_monthEarningsState',
-    get: ({ get }) => {
-      const dayEarnings: number = get(allBodyStates.dayEarningsState);
-      return dayEarnings * monthWorkdays;
-    },
-  }),
-};
+export const allBodyStates = new CalculatorGroupStates('allBody', 20, 300);
 
 export const totalMonthEarningsState = selector({
   key: 'totalMonthEarnings',
