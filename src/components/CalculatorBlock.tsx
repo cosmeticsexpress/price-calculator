@@ -85,9 +85,9 @@ export default function CalculatorBlock({
   ];
 
   return (
-    <section className='border border-gray-400 rounded-md p-2 bg-gray-50'>
+    <section className='border rounded-md border-gray-400 bg-gray-50 p-3 flex flex-col gap-3 items-center'>
       <div className='text-center'>
-        <h2 className='text-amber-400 font-semibold text-2xl'>{title}</h2>
+        <h2 className='text-amber-500 font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>{subtitle}</h3>
       </div>
 

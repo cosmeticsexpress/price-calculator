@@ -18,10 +18,10 @@ export default function ReadonlyTextField({
   const value = useRecoilValue(state);
   const format = isCurrency ? formatCurrency : formatNumber;
   return (
-    <span className={[className, 'p-1'].join(' ').trim()} style={style}>
+    <output className={className} style={style}>
       {typeof value === 'number' || typeof value === 'bigint'
         ? format(value)
         : value}
-    </span>
+    </output>
   );
 }

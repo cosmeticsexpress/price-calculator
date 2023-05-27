@@ -8,7 +8,7 @@ export default function MonthlyEarningsDisplay() {
       <ReadonlyTextField
         isCurrency
         state={totalMonthEarningsState}
-        className='bg-amber-400 text-white border-gray-500 rounded-sm'
+        className='bg-amber-500 text-white border text-center border-gray-400 rounded-sm m-1 p-1 w-full'
       />
     </section>
   );

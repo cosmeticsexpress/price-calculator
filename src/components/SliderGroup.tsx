@@ -12,13 +12,18 @@ interface ISliderGroupProps {
 
 export default function SliderGroup({ sliderProps }: ISliderGroupProps) {
   return (
-    <>
+    <div className='flex flex-col gap-2'>
       {sliderProps.map(({ label, min, max, state }) => (
-        <div className='flex justify-between' key={crypto.randomUUID()}>
-          <span>{label}</span>
-          <Slider min={min} max={max} state={state} />
+        <div className='flex gap-1 relative' key={crypto.randomUUID()}>
+          <span className='text-xs text-center w-1/3'>{label}</span>
+          <Slider
+            className='col-span-3 w-2/3'
+            min={min}
+            max={max}
+            state={state}
+          />
         </div>
       ))}
-    </>
+    </div>
   );
 }
