@@ -41,17 +41,12 @@ class CalculatorGroupStates {
 
     this.dayEarningsState = selector({
       key: `${this.stateKey}_dayEarningsState`,
-      get: ({ get }) => {
-        const appointmentPrice: number = get(this.appointmentDurationState),
-          appointmentDuration: number = get(this.appointmentPriceState),
-          workingHours: number = get(this.workingHoursState);
-
-        return getDayEarnings(
-          appointmentPrice,
-          appointmentDuration,
-          workingHours
-        );
-      },
+      get: ({ get }) => 
+        getDayEarnings(
+          get(this.appointmentPriceState),
+          get(this.appointmentDurationState),
+          get(this.workingHoursState)
+        ) 
     });
 
     this.monthEarningsState = selector({
@@ -82,11 +77,9 @@ export const allBodyStates = new CalculatorGroupStates('allBody', 20, 300);
 
 export const totalMonthEarningsState = selector({
   key: 'totalMonthEarnings',
-  get: ({ get }) => {
-    return (
-      get(smallAreasStates.monthEarningsState) +
-      get(largeAreasStates.monthEarningsState) +
-      get(allBodyStates.monthEarningsState)
-    );
-  },
+  get: ({ get }) => (
+    get(smallAreasStates.monthEarningsState) +
+    get(largeAreasStates.monthEarningsState) +
+    get(allBodyStates.monthEarningsState)
+  )
 });
