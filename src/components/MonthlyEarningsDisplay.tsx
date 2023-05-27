@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
-import ReadonlyTextField from './ReadonlyTextField';
-import { totalMonthEarningsState } from './states';
-import { formatCurrency } from './numberFormat';
+import ReadonlyTextField from '@components/ReadonlyTextField';
+import { totalMonthEarningsState } from '@utils/states';
+import { formatCurrency } from '@utils/numberFormat';
 
 export default function MonthlyEarningsDisplay() {
   const totalMonthEarnings = useRecoilValue(totalMonthEarningsState);

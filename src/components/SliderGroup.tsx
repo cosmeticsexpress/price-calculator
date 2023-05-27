@@ -1,5 +1,5 @@
 import { RecoilState } from 'recoil';
-import Slider from './Slider';
+import Slider from '@components/Slider';
 
 interface ISliderGroupProps {
   sliderGroupProps: {

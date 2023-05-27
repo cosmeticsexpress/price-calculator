@@ -1,6 +1,6 @@
 import { RecoilState, RecoilValueReadOnly } from 'recoil';
-import SliderGroup from './SliderGroup';
-import TextFieldGroup from './TextFieldGroup';
+import SliderGroup from '@components/SliderGroup';
+import TextFieldGroup from '@components/TextFieldGroup';
 
 interface ICalculatorBlockProps {
   title?: string;

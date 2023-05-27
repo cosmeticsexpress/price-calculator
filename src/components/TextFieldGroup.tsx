@@ -1,7 +1,7 @@
 import { useRecoilValue, RecoilState, RecoilValue } from 'recoil';
-import ReadonlyTextField from './ReadonlyTextField';
-import { monthWorkdays } from './states';
-import { formatCurrency } from './numberFormat';
+import ReadonlyTextField from '@components/ReadonlyTextField';
+import { monthWorkdays } from '@utils/states';
+import { formatCurrency } from '@utils/numberFormat';
 
 export default function TextFieldGroup({
   appointmentPriceState,

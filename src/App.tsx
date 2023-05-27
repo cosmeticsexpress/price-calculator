@@ -1,7 +1,10 @@
-import './App.css';
-import CalculatorBlock from './CalculatorBlock';
-import MonthlyEarningsDisplay from './MonthlyEarningsDisplay';
-import { smallAreasStates, largeAreasStates, allBodyStates } from './states';
+import CalculatorBlock from '@components/CalculatorBlock';
+import MonthlyEarningsDisplay from '@components/MonthlyEarningsDisplay';
+import {
+  smallAreasStates,
+  largeAreasStates,
+  allBodyStates,
+} from '@utils/states';
 
 export default function App() {
   const calculatorTitles = [
