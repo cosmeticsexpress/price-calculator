@@ -40,7 +40,7 @@ export default function CalculatorBlock({
 
   const { appointmentDuration, appointmentPrice } = sliderRanges;
 
-  const sliderGroupProps = [
+  const sliderProps = [
     {
       label: 'זמן עבודה לטיפול',
       min: appointmentDuration.min,
@@ -66,7 +66,7 @@ export default function CalculatorBlock({
       <h2>{title}</h2>
       <h3>{subtitle}</h3>
       <div>
-        <SliderGroup sliderGroupProps={sliderGroupProps} />
+        <SliderGroup sliderProps={sliderProps} />
       </div>
 
       <div style={{ display: 'grid' }}>

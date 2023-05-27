@@ -2,7 +2,7 @@ import { RecoilState } from 'recoil';
 import Slider from '@components/Slider';
 
 interface ISliderGroupProps {
-  sliderGroupProps: {
+  sliderProps: {
     label: string;
     min: number;
     max: number;
@@ -10,14 +10,11 @@ interface ISliderGroupProps {
   }[];
 }
 
-export default function SliderGroup({ sliderGroupProps }: ISliderGroupProps) {
+export default function SliderGroup({ sliderProps }: ISliderGroupProps) {
   return (
     <>
-      {sliderGroupProps.map(({ label, min, max, state }) => (
-        <div
-          style={{ display: 'flex', justifyContent: 'space-between' }}
-          key={crypto.randomUUID()}
-        >
+      {sliderProps.map(({ label, min, max, state }) => (
+        <div className='flex justify-between' key={crypto.randomUUID()}>
           <span>{label}</span>
           <Slider min={min} max={max} state={state} />
         </div>
