@@ -85,19 +85,15 @@ export default function CalculatorBlock({
   ];
 
   return (
-    <section className='border rounded-md border-gray-400 bg-gray-50 p-3 flex flex-col gap-3 items-center'>
+    <section className='border rounded-md border-gray-400 bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'>
       <div className='text-center'>
         <h2 className='text-amber-500 font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>{subtitle}</h3>
       </div>
 
-      <div>
-        <SliderGroup sliderProps={sliderProps} />
-      </div>
+      <SliderGroup sliderProps={sliderProps} />
 
-      <div style={{ display: 'grid' }}>
-        <TextFieldGroup textFieldProps={textFieldProps} />
-      </div>
+      <TextFieldGroup textFieldProps={textFieldProps} />
     </section>
   );
 }

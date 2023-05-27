@@ -13,7 +13,7 @@ export default function TextFieldGroup({
   textFieldProps,
 }: ITextFieldGroupProps) {
   return (
-    <section className='grid grid-cols-2 gap-2'>
+    <section className='grid grid-cols-2 gap-2 w-full'>
       {textFieldProps.map(({ state, label, isCurrency }) => (
         <div
           key={crypto.randomUUID()}

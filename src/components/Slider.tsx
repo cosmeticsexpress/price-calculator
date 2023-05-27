@@ -19,7 +19,7 @@ export default function Slider({ min, max, state, className }: ISliderProps) {
         value={value}
         onChange={(e) => setValue(parseInt(e.target.value))}
       />
-      <output className='absolute left-0 -top-2 text-sm select-none'>
+      <output className='absolute left-0 -top-3.5 text-sm select-none'>
         {value}
       </output>
     </>

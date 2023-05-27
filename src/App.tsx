@@ -61,7 +61,7 @@ export default function App() {
         <h1 className='font-semibold text-amber-500 text-3xl'>מחשבון רווחים</h1>
         <h2 className='font-semibold text-3xl'>לטיפולי הסרת שיער בלייזר</h2>
       </div>
-      <div className='flex gap-4 max-lg:flex-col'>
+      <div className='flex gap-4 max-lg:flex-col max-sm:w-full'>
         {calculatorProps.map(({ title, subtitle, states, sliderRanges }) => (
           <CalculatorBlock
             key={crypto.randomUUID()}
