@@ -1,15 +1,15 @@
-import { useRecoilValue } from 'recoil';
 import ReadonlyTextField from '@components/ReadonlyTextField';
 import { totalMonthEarningsState } from '@utils/states';
-import { formatCurrency } from '@utils/numberFormat';
 
 export default function MonthlyEarningsDisplay() {
-  const totalMonthEarnings = useRecoilValue(totalMonthEarningsState);
-
   return (
-    <div>
-      <span>סה״כ רווח חודשי</span>
-      <ReadonlyTextField value={formatCurrency(totalMonthEarnings)} />
-    </div>
+    <section className='flex flex-col items-center'>
+      <span>סה״כ רווח חודשי:</span>
+      <ReadonlyTextField
+        isCurrency
+        state={totalMonthEarningsState}
+        className='bg-amber-400 text-white border-gray-500 rounded-sm'
+      />
+    </section>
   );
 }

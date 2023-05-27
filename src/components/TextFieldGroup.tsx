@@ -1,51 +1,29 @@
-import { useRecoilValue, RecoilState, RecoilValue } from 'recoil';
+import { RecoilState, RecoilValue } from 'recoil';
 import ReadonlyTextField from '@components/ReadonlyTextField';
-import { monthWorkdays } from '@utils/states';
-import { formatCurrency } from '@utils/numberFormat';
+
+interface ITextFieldGroupProps {
+  textFieldProps: {
+    state: RecoilValue<number> | RecoilState<number>;
+    label: string;
+    isCurrency?: boolean;
+  }[];
+}
 
 export default function TextFieldGroup({
-  appointmentPriceState,
-  dayEarningsState,
-  monthEarningsState,
-}: {
-  appointmentPriceState: RecoilState<number>;
-  dayEarningsState: RecoilValue<number>;
-  monthEarningsState: RecoilValue<number>;
-}) {
-  const appointmentPrice = useRecoilValue(appointmentPriceState);
-  const dayEarnings = useRecoilValue(dayEarningsState);
-  const monthEarnings = useRecoilValue(monthEarningsState);
-
+  textFieldProps,
+}: ITextFieldGroupProps) {
   return (
-    <>
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-        key={crypto.randomUUID()}
-      >
-        <span>רווח מטיפול יחיד</span>
-        <ReadonlyTextField value={formatCurrency(appointmentPrice)} />
-      </div>
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-        key={crypto.randomUUID()}
-      >
-        <span>רווח מיום עבודה</span>
-        <ReadonlyTextField value={formatCurrency(dayEarnings)} />
-      </div>
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-        key={crypto.randomUUID()}
-      >
-        <span>ימי עבודה חודשיים</span>
-        <ReadonlyTextField value={monthWorkdays} />
-      </div>
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between' }}
-        key={crypto.randomUUID()}
-      >
-        <span>רווח מחודש עבודה</span>
-        <ReadonlyTextField value={formatCurrency(monthEarnings)} />
-      </div>
-    </>
+    <section className='grid'>
+      {textFieldProps.map(({ state, label, isCurrency }) => (
+        <div key={crypto.randomUUID()}>
+          <span>{label}</span>
+          <ReadonlyTextField
+            state={state}
+            isCurrency={isCurrency}
+            className='border-gray-500 rounded-sm'
+          />
+        </div>
+      ))}
+    </section>
   );
 }

@@ -2,6 +2,11 @@ import { atom, selector } from 'recoil';
 
 export const monthWorkdays = 25;
 
+export const monthWorkdaysState = selector({
+  key: 'monthWorkdays',
+  get: () => monthWorkdays,
+});
+
 /**
   (תמחור לטיפול  *  זמן עבודה לטיפול)
   / 60

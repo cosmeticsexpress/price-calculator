@@ -10,7 +10,7 @@ export default function App() {
   const calculatorTitles = [
     {
       title: 'אזורים קטנים',
-      subtitle: 'פנים, מפשעות, בית שחי',
+      subtitle: 'פנים ▪ מפשעות ▪ בית שחי',
       states: smallAreasStates,
       sliderRanges: {
         appointmentDuration: {
@@ -25,7 +25,7 @@ export default function App() {
     },
     {
       title: 'אזורים גדולים',
-      subtitle: 'רגליים, ידיים, בטן, גב',
+      subtitle: 'רגליים ▪ ידיים ▪ בטן ▪ גב',
       states: largeAreasStates,
       sliderRanges: {
         appointmentDuration: {
@@ -40,7 +40,7 @@ export default function App() {
     },
     {
       title: 'כל הגוף',
-      subtitle: 'נשים, גברים',
+      subtitle: 'נשים ▪ גברים',
       states: allBodyStates,
       sliderRanges: {
         appointmentDuration: {
@@ -56,17 +56,25 @@ export default function App() {
   ];
 
   return (
-    <>
-      {calculatorTitles.map(({ title, subtitle, states, sliderRanges }) => (
-        <CalculatorBlock
-          key={crypto.randomUUID()}
-          title={title}
-          subtitle={subtitle}
-          states={states}
-          sliderRanges={sliderRanges}
-        />
-      ))}
-      <MonthlyEarningsDisplay />
-    </>
+    <main dir='auto' className='p-4 flex flex-col items-center'>
+      <div className='text-center'>
+        <h1 className='font-semibold text-amber-400 text-3xl'>מחשבון רווחים</h1>
+        <h2 className='font-semibold text-3xl'>לטיפולי הסרת שיער בלייזר</h2>
+      </div>
+      <div className='flex gap-4'>
+        {calculatorTitles.map(({ title, subtitle, states, sliderRanges }) => (
+          <CalculatorBlock
+            key={crypto.randomUUID()}
+            title={title}
+            subtitle={subtitle}
+            states={states}
+            sliderRanges={sliderRanges}
+          />
+        ))}
+      </div>
+      <div className='w-full flex justify-center'>
+        <MonthlyEarningsDisplay />
+      </div>
+    </main>
   );
 }
