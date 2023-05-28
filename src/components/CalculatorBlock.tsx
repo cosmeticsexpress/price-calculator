@@ -56,7 +56,7 @@ export default function CalculatorBlock({
     },
     {
       label: 'שעות עבודה יומיות',
-      min: 2,
+      min: 1,
       max: 8,
       state: workingHoursState,
     },
