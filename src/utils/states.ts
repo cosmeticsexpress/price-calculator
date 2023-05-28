@@ -1,11 +1,9 @@
 import { RecoilState, RecoilValueReadOnly, atom, selector } from 'recoil';
-import { RANGES, WORKING_HOURS } from '@utils/values';
-
-export const monthWorkdays = 25;
+import { RANGES, WORKING_HOURS, MONTH_WORKDAYS } from '@utils/values';
 
 export const monthWorkdaysState = selector({
   key: 'monthWorkdays',
-  get: () => monthWorkdays,
+  get: () => MONTH_WORKDAYS,
 });
 
 class CalculatorStates {
@@ -62,7 +60,7 @@ class CalculatorStates {
 
     this.monthEarningsState = selector({
       key: `${this.stateKey}_monthEarningsState`,
-      get: ({ get }) => get(this.dayEarningsState) * monthWorkdays,
+      get: ({ get }) => get(this.dayEarningsState) * MONTH_WORKDAYS,
     });
   }
 }
