@@ -1,5 +1,6 @@
 import { RecoilState, RecoilValueReadOnly, atom, selector } from 'recoil';
 import { RANGES, WORKING_HOURS, MONTH_WORKDAYS } from '@utils/values';
+import getDayEarnings from './getDayEarnings';
 
 export const monthWorkdaysState = selector({
   key: 'monthWorkdays',
@@ -64,16 +65,6 @@ class CalculatorStates {
     });
   }
 }
-
-const getDayEarnings = ({
-  appointmentDuration,
-  appointmentPrice,
-  workingHours,
-}: {
-  appointmentDuration: number;
-  appointmentPrice: number;
-  workingHours: number;
-}) => (60 / appointmentDuration) * appointmentPrice * workingHours;
 
 export const smallAreasStates = new CalculatorStates(
   'smallAreas',
