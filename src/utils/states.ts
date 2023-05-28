@@ -38,6 +38,16 @@ class CalculatorStates {
     this.workingHoursState = atom({
       key: `${this.stateKey}_workingHoursState`,
       default: WORKING_HOURS.min,
+      effects: [
+        ({ onSet, setSelf, getPromise }) => {
+          onSet(async (newValue, oldValue) => {
+            const totalWorkingHours = await getPromise(totalWorkingHoursState);
+
+            const valueToSet = totalWorkingHours <= 8 ? newValue : oldValue;
+            setSelf(() => valueToSet);
+          });
+        },
+      ],
     });
 
     this.dayEarningsState = selector({
@@ -80,6 +90,14 @@ export const allBodyStates = new CalculatorStates(
   RANGES.ALL_BODY.appointmentDuration.min,
   RANGES.ALL_BODY.appointmentPrice.min
 );
+
+export const totalWorkingHoursState = selector({
+  key: 'totalWorkingHours',
+  get: ({ get }) =>
+    get(smallAreasStates.workingHoursState) +
+    get(largeAreasStates.workingHoursState) +
+    get(allBodyStates.workingHoursState),
+});
 
 export const totalMonthEarningsState = selector({
   key: 'totalMonthEarnings',

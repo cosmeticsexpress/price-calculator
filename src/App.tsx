@@ -4,8 +4,10 @@ import {
   smallAreasStates,
   largeAreasStates,
   allBodyStates,
+  totalWorkingHoursState,
 } from '@utils/states';
 import { RANGES } from '@utils/values';
+import { useRecoilValue } from 'recoil';
 
 export default function App() {
   const calculatorProps = [
@@ -49,6 +51,12 @@ export default function App() {
       <div className='w-full flex justify-center'>
         <MonthlyEarningsDisplay />
       </div>
+      <WorkingHoursDisplay />
     </main>
   );
+}
+
+function WorkingHoursDisplay() {
+  const value = useRecoilValue(totalWorkingHoursState);
+  return <>סה״כ שעות עבודה: {value}</>;
 }
