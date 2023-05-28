@@ -42,7 +42,8 @@ class CalculatorStates {
           onSet(async (newValue, oldValue) => {
             const totalWorkingHours = await getPromise(totalWorkingHoursState);
 
-            const valueToSet = totalWorkingHours <= 8 ? newValue : oldValue;
+            const valueToSet =
+              totalWorkingHours <= WORKING_HOURS.max ? newValue : oldValue;
             setSelf(() => valueToSet);
           });
         },
