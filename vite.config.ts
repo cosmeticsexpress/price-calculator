@@ -13,5 +13,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
-  base: '/laser-removal-price-calc/',
+  base: '/price-calculator/',
 });
