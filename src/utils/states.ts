@@ -1,4 +1,5 @@
 import { RecoilState, RecoilValueReadOnly, atom, selector } from 'recoil';
+import { RANGES } from '@utils/values';
 
 export const monthWorkdays = 25;
 
@@ -7,7 +8,7 @@ export const monthWorkdaysState = selector({
   get: () => monthWorkdays,
 });
 
-class CalculatorGroupStates {
+class CalculatorStates {
   private stateKey: string = '';
 
   appointmentDurationState: RecoilState<number>;
@@ -41,7 +42,7 @@ class CalculatorGroupStates {
 
     this.dayEarningsState = selector({
       key: `${this.stateKey}_dayEarningsState`,
-      get: ({ get }) => 
+      get: ({ get }) =>
         getDayEarnings(
           get(this.appointmentDurationState),
           get(this.appointmentPriceState),
@@ -62,21 +63,28 @@ const getDayEarnings = (
   workingHours: number
 ) => (60 / appointmentDuration) * appointmentPrice * workingHours;
 
-export const smallAreasStates = new CalculatorGroupStates('smallAreas', 5, 100);
-
-export const largeAreasStates = new CalculatorGroupStates(
-  'largeAreas',
-  15,
-  200
+export const smallAreasStates = new CalculatorStates(
+  'smallAreas',
+  RANGES.SMALL_AREAS.appointmentDuration.min,
+  RANGES.SMALL_AREAS.appointmentPrice.min
 );
 
-export const allBodyStates = new CalculatorGroupStates('allBody', 20, 300);
+export const largeAreasStates = new CalculatorStates(
+  'largeAreas',
+  RANGES.LARGE_AREAS.appointmentDuration.min,
+  RANGES.LARGE_AREAS.appointmentPrice.min
+);
+
+export const allBodyStates = new CalculatorStates(
+  'allBody',
+  RANGES.ALL_BODY.appointmentDuration.min,
+  RANGES.ALL_BODY.appointmentPrice.min
+);
 
 export const totalMonthEarningsState = selector({
   key: 'totalMonthEarnings',
-  get: ({ get }) => (
+  get: ({ get }) =>
     get(smallAreasStates.monthEarningsState) +
     get(largeAreasStates.monthEarningsState) +
-    get(allBodyStates.monthEarningsState)
-  ),
+    get(allBodyStates.monthEarningsState),
 });
