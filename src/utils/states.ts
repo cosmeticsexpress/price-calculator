@@ -1,6 +1,6 @@
 import { RecoilState, RecoilValueReadOnly, atom, selector } from 'recoil';
 import { RANGES, WORKING_HOURS, MONTH_WORKDAYS } from '@utils/values';
-import getDayEarnings from './getDayEarnings';
+import getDayEarnings from '@utils/getDayEarnings';
 
 export const monthWorkdaysState = selector({
   key: 'monthWorkdays',
