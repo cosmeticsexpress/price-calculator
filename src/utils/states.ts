@@ -51,11 +51,11 @@ class CalculatorStates {
     this.dayEarningsState = selector({
       key: `${this.stateKey}_dayEarningsState`,
       get: ({ get }) =>
-        getDayEarnings(
-          get(this.appointmentDurationState),
-          get(this.appointmentPriceState),
-          get(this.workingHoursState)
-        ),
+        getDayEarnings({
+          appointmentDuration: get(this.appointmentDurationState),
+          appointmentPrice: get(this.appointmentPriceState),
+          workingHours: get(this.workingHoursState),
+        }),
     });
 
     this.monthEarningsState = selector({
@@ -65,11 +65,15 @@ class CalculatorStates {
   }
 }
 
-const getDayEarnings = (
-  appointmentDuration: number,
-  appointmentPrice: number,
-  workingHours: number
-) => (60 / appointmentDuration) * appointmentPrice * workingHours;
+const getDayEarnings = ({
+  appointmentDuration,
+  appointmentPrice,
+  workingHours,
+}: {
+  appointmentDuration: number;
+  appointmentPrice: number;
+  workingHours: number;
+}) => (60 / appointmentDuration) * appointmentPrice * workingHours;
 
 export const smallAreasStates = new CalculatorStates(
   'smallAreas',
