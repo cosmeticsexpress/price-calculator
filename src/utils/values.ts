@@ -47,4 +47,9 @@ export const RANGES: {
   },
 };
 
-export default { MONTH_WORKDAYS, RANGES };
+export const WORKING_HOURS: MinMax = {
+  min: 1,
+  max: 8,
+};
+
+export default { MONTH_WORKDAYS, RANGES, WORKING_HOURS };
