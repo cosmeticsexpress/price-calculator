@@ -43,8 +43,8 @@ class CalculatorGroupStates {
       key: `${this.stateKey}_dayEarningsState`,
       get: ({ get }) => 
         getDayEarnings(
-          get(this.appointmentPriceState),
           get(this.appointmentDurationState),
+          get(this.appointmentPriceState),
           get(this.workingHoursState)
         ),
     });
