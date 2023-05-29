@@ -52,4 +52,12 @@ export const WORKING_HOURS: MinMax = {
   max: 8,
 };
 
-export default { MONTH_WORKDAYS, RANGES, WORKING_HOURS };
+export const goldGradient = 'bg-gradient-to-r from-gold-300 to-gold-500';
+export const goldGradientText = `${goldGradient} text-transparent bg-clip-text`;
+export default {
+  MONTH_WORKDAYS,
+  RANGES,
+  WORKING_HOURS,
+  goldGradient,
+  goldGradientText,
+};

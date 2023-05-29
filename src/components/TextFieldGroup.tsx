@@ -17,13 +17,13 @@ export default function TextFieldGroup({
       {textFieldProps.map(({ state, label, isCurrency }) => (
         <div
           key={crypto.randomUUID()}
-          className='[&>output]:last:bg-amber-500 [&>output]:last:text-white flex flex-col items-center w-full'
+          className={`[&>output]:last:bg-gradient-to-r [&>output]:last:from-gold-300 [&>output]:last:to-gold-500 [&>output]:last:text-white flex flex-col items-center w-full`}
         >
           <span className='text-xs'>{label}:</span>
           <ReadonlyTextField
             state={state}
             isCurrency={isCurrency}
-            className='border-gray-400 border rounded-sm p-1 bg-white text-center w-full'
+            className='border rounded-sm p-1 bg-white text-center w-full'
           />
         </div>
       ))}
