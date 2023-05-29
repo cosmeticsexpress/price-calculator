@@ -4,7 +4,10 @@ import {
   smallAreasStates,
   largeAreasStates,
   allBodyStates,
+  totalWorkingHoursState,
 } from '@utils/states';
+import { RANGES } from '@utils/values';
+import { useRecoilValue } from 'recoil';
 
 export default function App() {
   const calculatorProps = [
@@ -12,46 +15,19 @@ export default function App() {
       title: 'אזורים קטנים',
       subtitle: 'פנים ▪ מפשעות ▪ בית שחי',
       states: smallAreasStates,
-      sliderRanges: {
-        appointmentDuration: {
-          min: 5,
-          max: 15,
-        },
-        appointmentPrice: {
-          min: 100,
-          max: 300,
-        },
-      },
+      sliderRanges: RANGES.SMALL_AREAS,
     },
     {
       title: 'אזורים גדולים',
       subtitle: 'רגליים ▪ ידיים ▪ בטן ▪ גב',
       states: largeAreasStates,
-      sliderRanges: {
-        appointmentDuration: {
-          min: 15,
-          max: 30,
-        },
-        appointmentPrice: {
-          min: 200,
-          max: 400,
-        },
-      },
+      sliderRanges: RANGES.LARGE_AREAS,
     },
     {
       title: 'כל הגוף',
       subtitle: 'נשים ▪ גברים',
       states: allBodyStates,
-      sliderRanges: {
-        appointmentDuration: {
-          min: 20,
-          max: 40,
-        },
-        appointmentPrice: {
-          min: 300,
-          max: 600,
-        },
-      },
+      sliderRanges: RANGES.ALL_BODY,
     },
   ];
 
@@ -75,6 +51,12 @@ export default function App() {
       <div className='w-full flex justify-center'>
         <MonthlyEarningsDisplay />
       </div>
+      <WorkingHoursDisplay />
     </main>
   );
+}
+
+function WorkingHoursDisplay() {
+  const value = useRecoilValue(totalWorkingHoursState);
+  return <>סה״כ שעות עבודה: {value}</>;
 }

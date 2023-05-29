@@ -2,6 +2,7 @@ import { RecoilState, RecoilValueReadOnly } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
 import { monthWorkdaysState } from '@utils/states';
+import { WORKING_HOURS } from '@/utils/values';
 
 interface ICalculatorBlockProps {
   title?: string;
@@ -56,8 +57,8 @@ export default function CalculatorBlock({
     },
     {
       label: 'שעות עבודה יומיות',
-      min: 1,
-      max: 8,
+      min: WORKING_HOURS.min,
+      max: WORKING_HOURS.max,
       state: workingHoursState,
     },
   ];
