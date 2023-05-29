@@ -1,11 +1,9 @@
-import { useRecoilValue } from 'recoil';
 import CalculatorBlock from '@components/CalculatorBlock';
 import MonthlyEarningsDisplay from '@components/MonthlyEarningsDisplay';
 import {
   smallAreasStates,
   largeAreasStates,
   allBodyStates,
-  totalWorkingHoursState,
 } from '@utils/states';
 import { MinMax, RANGES, WORKING_HOURS, goldGradientText } from '@utils/values';
 
