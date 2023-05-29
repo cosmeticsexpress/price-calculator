@@ -12,7 +12,7 @@ export default function Slider({ min, max, state, className }: ISliderProps) {
   return (
     <>
       <input
-        className={[className, 'accent-amber-500 z-10'].join(' ').trim()}
+        className={[className, 'accent-gold-500 z-10'].join(' ').trim()}
         type='range'
         min={min}
         max={max}
