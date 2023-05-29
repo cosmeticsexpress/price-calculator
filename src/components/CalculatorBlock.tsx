@@ -86,7 +86,7 @@ export default function CalculatorBlock({
   ];
 
   return (
-    <section className='border rounded-md border-gray-400 bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'>
+    <section className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'>
       <div className='text-center'>
         <h2 className={`${goldGradientText} font-semibold text-2xl`}>
           {title}

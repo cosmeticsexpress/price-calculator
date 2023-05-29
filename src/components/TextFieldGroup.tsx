@@ -23,7 +23,7 @@ export default function TextFieldGroup({
           <ReadonlyTextField
             state={state}
             isCurrency={isCurrency}
-            className='border-gray-400 border rounded-sm p-1 bg-white text-center w-full'
+            className='border rounded-sm p-1 bg-white text-center w-full'
           />
         </div>
       ))}
