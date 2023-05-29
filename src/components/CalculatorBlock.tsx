@@ -1,8 +1,9 @@
-import { RecoilState, RecoilValueReadOnly } from 'recoil';
+import { RecoilState, RecoilValueReadOnly, useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
-import { monthWorkdaysState } from '@utils/states';
-import { WORKING_HOURS, goldGradientText } from '@/utils/values';
+import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
+import { AreaRanges, WORKING_HOURS, goldGradientText } from '@/utils/values';
+import { formatCurrency } from '@/utils/numberFormat';
 
 interface ICalculatorBlockProps {
   title?: string;
@@ -14,16 +15,7 @@ interface ICalculatorBlockProps {
     dayEarningsState: RecoilValueReadOnly<number>;
     monthEarningsState: RecoilValueReadOnly<number>;
   };
-  sliderRanges: {
-    appointmentDuration: {
-      min: number;
-      max: number;
-    };
-    appointmentPrice: {
-      min: number;
-      max: number;
-    };
-  };
+  sliderRanges: AreaRanges;
 }
 
 export default function CalculatorBlock({
@@ -40,7 +32,7 @@ export default function CalculatorBlock({
     monthEarningsState,
   } = states;
 
-  const { appointmentDuration, appointmentPrice } = sliderRanges;
+  const { appointmentDuration, appointmentPrice, workingHours } = sliderRanges;
 
   const sliderProps = [
     {
@@ -48,18 +40,24 @@ export default function CalculatorBlock({
       min: appointmentDuration.min,
       max: appointmentDuration.max,
       state: appointmentDurationState,
+      outputRenderer: (value: number) => `${value} דקות`,
     },
     {
       label: 'תמחור לטיפול בודד',
       min: appointmentPrice.min,
       max: appointmentPrice.max,
       state: appointmentPriceState,
+      outputRenderer: (value: number) => formatCurrency(value),
     },
     {
       label: 'שעות עבודה יומיות',
-      min: WORKING_HOURS.min,
-      max: WORKING_HOURS.max,
+      min: workingHours ? workingHours.min : WORKING_HOURS.min,
+      max: workingHours ? workingHours.max : WORKING_HOURS.max,
       state: workingHoursState,
+      outputRenderer: (value: number) =>
+        `${value} (סה״כ ${useRecoilValue(totalWorkingHoursState)}/${
+          WORKING_HOURS.max
+        })`,
     },
   ];
 

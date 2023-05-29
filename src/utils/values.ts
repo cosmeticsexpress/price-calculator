@@ -1,13 +1,14 @@
 export const MONTH_WORKDAYS = 22;
 
-type MinMax = {
+export type MinMax = {
   min: number;
   max: number;
 };
 
-interface AreaRanges {
+export interface AreaRanges {
   appointmentDuration: MinMax;
   appointmentPrice: MinMax;
+  workingHours?: MinMax;
 }
 
 export const RANGES: {

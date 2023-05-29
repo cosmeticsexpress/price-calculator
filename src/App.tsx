@@ -1,3 +1,4 @@
+import { useRecoilValue } from 'recoil';
 import CalculatorBlock from '@components/CalculatorBlock';
 import MonthlyEarningsDisplay from '@components/MonthlyEarningsDisplay';
 import {
@@ -6,8 +7,7 @@ import {
   allBodyStates,
   totalWorkingHoursState,
 } from '@utils/states';
-import { RANGES, goldGradientText } from '@utils/values';
-import { useRecoilValue } from 'recoil';
+import { MinMax, RANGES, WORKING_HOURS, goldGradientText } from '@utils/values';
 
 export default function App() {
   const calculatorProps = [
@@ -31,6 +31,17 @@ export default function App() {
     },
   ];
 
+  calculatorProps.forEach(
+    (calc) =>
+      (calc.sliderRanges = {
+        ...calc.sliderRanges,
+        workingHours: {
+          max: WORKING_HOURS.max - calculatorProps.length + 1,
+          min: WORKING_HOURS.min,
+        } satisfies MinMax,
+      })
+  );
+
   return (
     <main dir='auto' className='p-4 flex flex-col items-center gap-2'>
       <div className='text-center'>
@@ -53,12 +64,6 @@ export default function App() {
       <div className='w-full flex justify-center'>
         <MonthlyEarningsDisplay />
       </div>
-      <WorkingHoursDisplay />
     </main>
   );
-}
-
-function WorkingHoursDisplay() {
-  const value = useRecoilValue(totalWorkingHoursState);
-  return <>סה״כ שעות עבודה: {value}</>;
 }
