@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { RecoilValue, useRecoilValue } from 'recoil';
-import { formatCurrency, formatNumber } from '@/utils/numberFormat';
+import { formatCurrency, formatNumber } from '@utils/numberFormat';
 
 export interface IReadonlyTextFieldProps {
   className?: string;

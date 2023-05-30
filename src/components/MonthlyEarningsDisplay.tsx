@@ -1,5 +1,5 @@
-import { goldGradient } from '@/utils/values';
 import ReadonlyTextField from '@components/ReadonlyTextField';
+import { goldGradient } from '@utils/values';
 import { totalMonthEarningsState } from '@utils/states';
 
 export default function MonthlyEarningsDisplay() {
