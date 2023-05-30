@@ -29,16 +29,16 @@ export default function App() {
     },
   ];
 
-  calculatorProps.forEach(
-    (calc) =>
-      (calc.sliderRanges = {
-        ...calc.sliderRanges,
-        workingHours: {
-          max: WORKING_HOURS.max - calculatorProps.length + 1,
-          min: WORKING_HOURS.min,
-        } satisfies MinMax,
-      })
-  );
+  calculatorProps.forEach(({ sliderRanges }) => {
+    const { min, max } = WORKING_HOURS;
+    sliderRanges = {
+      ...sliderRanges,
+      workingHours: {
+        max: max - calculatorProps.length * min + min,
+        min,
+      } satisfies MinMax,
+    };
+  });
 
   return (
     <main dir='auto' className='p-4 flex flex-col items-center gap-2'>

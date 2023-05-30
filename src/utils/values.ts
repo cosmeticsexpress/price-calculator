@@ -49,7 +49,7 @@ export const RANGES: {
 };
 
 export const WORKING_HOURS: MinMax = {
-  min: 1,
+  min: 0,
   max: 8,
 };
 
