@@ -9,7 +9,7 @@ export const monthWorkdaysState = selector({
 
 class CalculatorStates {
   private stateKey: string = '';
-  private divisor: number = 1;
+  private divisor: number = 2.3;
 
   appointmentDurationState: RecoilState<number>;
   appointmentPriceState: RecoilState<number>;
