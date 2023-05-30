@@ -9,6 +9,7 @@ export const monthWorkdaysState = selector({
 
 class CalculatorStates {
   private stateKey: string = '';
+  private divisor: number = 1;
 
   appointmentDurationState: RecoilState<number>;
   appointmentPriceState: RecoilState<number>;
@@ -23,6 +24,15 @@ class CalculatorStates {
     appointmentPrice: number
   ) {
     this.stateKey = stateKey;
+
+    switch (this.stateKey) {
+      case 'smallAreas':
+        this.divisor = 3;
+        break;
+      case 'largeAreas':
+        this.divisor = 2.5;
+        break;
+    }
 
     this.appointmentDurationState = atom({
       key: `${this.stateKey}_appointmentDurationState`,
@@ -57,7 +67,7 @@ class CalculatorStates {
           appointmentDuration: get(this.appointmentDurationState),
           appointmentPrice: get(this.appointmentPriceState),
           workingHours: get(this.workingHoursState),
-        }),
+        }) / this.divisor,
     });
 
     this.monthEarningsState = selector({
