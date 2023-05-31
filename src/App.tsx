@@ -6,6 +6,7 @@ import {
   allBodyStates,
 } from '@utils/states';
 import { MinMax, RANGES, WORKING_HOURS, goldGradientText } from '@utils/values';
+import backgroundImage from '@assets/background.jpg';
 
 export default function App() {
   const calculatorProps = [
@@ -41,7 +42,15 @@ export default function App() {
   });
 
   return (
-    <main dir='auto' className='p-4 flex flex-col items-center gap-2'>
+    <main
+      dir='auto'
+      style={{
+        background: `url('${backgroundImage}')`,
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'repeat',
+      }}
+      className='p-4 flex flex-col items-center gap-2 w-full h-full lg:h-screen'
+    >
       <div className='text-center'>
         <h1 className={`font-semibold ${goldGradientText} text-3xl`}>
           מחשבון רווחים
@@ -49,14 +58,8 @@ export default function App() {
         <h2 className='font-semibold text-3xl'>לטיפולי הסרת שיער בלייזר</h2>
       </div>
       <div className='flex gap-4 max-lg:flex-col max-sm:w-full'>
-        {calculatorProps.map(({ title, subtitle, states, sliderRanges }) => (
-          <CalculatorBlock
-            key={crypto.randomUUID()}
-            title={title}
-            subtitle={subtitle}
-            states={states}
-            sliderRanges={sliderRanges}
-          />
+        {calculatorProps.map((props) => (
+          <CalculatorBlock key={crypto.randomUUID()} {...props} />
         ))}
       </div>
       <div className='w-full flex justify-center'>
