@@ -14,19 +14,19 @@ export default function App() {
   const calculatorProps = [
     {
       title: 'אזורים קטנים',
-      subtitle: 'פנים ▪ מפשעות ▪ בית שחי',
+      subtitle: 'פנים • מפשעות • בית שחי',
       states: smallAreasStates,
       sliderRanges: RANGES.SMALL_AREAS,
     },
     {
       title: 'אזורים גדולים',
-      subtitle: 'רגליים ▪ ידיים ▪ בטן ▪ גב',
+      subtitle: 'רגליים • ידיים • בטן • גב',
       states: largeAreasStates,
       sliderRanges: RANGES.LARGE_AREAS,
     },
     {
       title: 'כל הגוף',
-      subtitle: 'נשים ▪ גברים',
+      subtitle: 'נשים • גברים',
       states: allBodyStates,
       sliderRanges: RANGES.ALL_BODY,
     },
