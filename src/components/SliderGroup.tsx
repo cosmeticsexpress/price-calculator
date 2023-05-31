@@ -15,7 +15,7 @@ export default function SliderGroup({ sliderProps }: ISliderGroupProps) {
     <div className='flex flex-col gap-6 w-full'>
       {sliderProps.map(({ label, ...slider }) => (
         <div className='flex gap-4 relative' key={crypto.randomUUID()}>
-          <span className='text-xs text-center w-1/3'>{label}</span>
+          <span className='text-base text-center w-1/3'>{label}</span>
           <Slider className='col-span-3 w-2/3' {...slider} />
         </div>
       ))}

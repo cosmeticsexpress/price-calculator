@@ -62,7 +62,7 @@ export default function Slider({
         >
           <div
             className={[
-              'absolute bottom-5 bg-gold-900 text-white text-xs whitespace-nowrap px-1 rounded-md transition-all z-10 select-none pointer-events-none',
+              'absolute bottom-5 bg-gold-900 text-white text-sm whitespace-nowrap px-1 rounded-md transition-all z-10 select-none pointer-events-none',
               localValue > (max + min) / 2
                 ? 'translate-x-[calc(100%-1rem)]'
                 : '',
