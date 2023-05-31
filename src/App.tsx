@@ -5,7 +5,10 @@ import {
   largeAreasStates,
   allBodyStates,
 } from '@utils/states';
-import { MinMax, RANGES, WORKING_HOURS, goldGradientText } from '@utils/values';
+import { MinMax, RANGES, WORKING_HOURS } from '@utils/values';
+import backgroundImage from '@assets/background.jpg';
+import thumbnailDesktop from '@assets/thumbnail-desktop.png';
+import thumbnailMobile from '@assets/thumbnail-mobile.png';
 
 export default function App() {
   const calculatorProps = [
@@ -41,26 +44,29 @@ export default function App() {
   });
 
   return (
-    <main dir='auto' className='p-4 flex flex-col items-center gap-2'>
-      <div className='text-center'>
-        <h1 className={`font-semibold ${goldGradientText} text-3xl`}>
-          מחשבון רווחים
-        </h1>
-        <h2 className='font-semibold text-3xl'>לטיפולי הסרת שיער בלייזר</h2>
-      </div>
-      <div className='flex gap-4 max-lg:flex-col max-sm:w-full'>
-        {calculatorProps.map(({ title, subtitle, states, sliderRanges }) => (
-          <CalculatorBlock
-            key={crypto.randomUUID()}
-            title={title}
-            subtitle={subtitle}
-            states={states}
-            sliderRanges={sliderRanges}
-          />
-        ))}
-      </div>
-      <div className='w-full flex justify-center'>
-        <MonthlyEarningsDisplay />
+    <main
+      dir='auto'
+      style={{
+        background: `url('${backgroundImage}')`,
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'repeat',
+      }}
+      className='flex flex-col items-center gap-2 w-full h-full min-h-screen [&>*]:max-w-2xl'
+    >
+      <picture className='max-lg:max-w-xs'>
+        <source media='(min-width: 640px)' srcSet={thumbnailDesktop} />
+        <img srcSet={thumbnailMobile} />
+      </picture>
+
+      <div className='p-4 lg:px-0 w-full h-full flex flex-col items-center gap-2'>
+        <div className='flex gap-4 max-lg:flex-col max-sm:w-full max-lg:w-80 w-full'>
+          {calculatorProps.map((props) => (
+            <CalculatorBlock key={crypto.randomUUID()} {...props} />
+          ))}
+        </div>
+        <div className='w-full flex justify-center'>
+          <MonthlyEarningsDisplay />
+        </div>
       </div>
     </main>
   );
