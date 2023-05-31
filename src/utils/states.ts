@@ -49,11 +49,14 @@ class CalculatorStates {
       default: WORKING_HOURS.min,
       effects: [
         ({ onSet, setSelf, getPromise }) => {
-          onSet(async (newValue, oldValue) => {
+          onSet(async (newValue) => {
             const totalWorkingHours = await getPromise(totalWorkingHoursState);
 
             const valueToSet =
-              totalWorkingHours <= WORKING_HOURS.max ? newValue : oldValue;
+              totalWorkingHours <= WORKING_HOURS.max
+                ? newValue
+                : newValue + WORKING_HOURS.max - totalWorkingHours;
+
             setSelf(() => valueToSet);
           });
         },

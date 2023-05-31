@@ -2,8 +2,8 @@ import { RecoilState, RecoilValueReadOnly, useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
 import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
-import { AreaRanges, WORKING_HOURS, goldGradientText } from '@/utils/values';
-import { formatCurrency } from '@/utils/numberFormat';
+import { AreaRanges, WORKING_HOURS, goldGradientText } from '@utils/values';
+import { formatCurrency } from '@utils/numberFormat';
 
 interface ICalculatorBlockProps {
   title?: string;
