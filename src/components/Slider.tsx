@@ -26,12 +26,8 @@ export default function Slider({
       values={[localValue]}
       min={min}
       max={max}
-      onChange={([newValue]) => {
-        setLocalValue(newValue);
-      }}
-      onFinalChange={([newValue]) => {
-        setValue(newValue);
-      }}
+      onChange={([newValue]) => setLocalValue(newValue)}
+      onFinalChange={([newValue]) => setValue(newValue)}
       step={1}
       renderTrack={({ props, children }) => (
         <div
@@ -59,9 +55,23 @@ export default function Slider({
         </div>
       )}
       renderThumb={({ props }) => (
-        <div {...props} style={props.style} className='relative'>
-          <div className='absolute bottom-3 w-28'>{output}</div>
-          <div className='bg-gold-900 w-4 aspect-square rounded-full' />
+        <div
+          {...props}
+          style={props.style}
+          className='relative outline-gold-500 bg-gold-900 w-4 aspect-square rounded-full before:absolute before:-top-2/3 before:transform before:-translate-x-1/2 before:rotate-45 before:w-2 before:h-2 before:bg-gold-900'
+        >
+          <div
+            className={[
+              'absolute bottom-5 bg-gold-900 text-white text-xs whitespace-nowrap px-1 rounded-md transition-all z-10 select-none pointer-events-none',
+              localValue > (max + min) / 2
+                ? 'translate-x-[calc(100%-1rem)]'
+                : '',
+            ]
+              .join(' ')
+              .trim()}
+          >
+            {output}
+          </div>
         </div>
       )}
     />
