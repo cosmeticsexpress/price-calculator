@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import CalculatorBlock from '@components/CalculatorBlock';
 import MonthlyEarningsDisplay from '@components/MonthlyEarningsDisplay';
 import {
@@ -13,18 +14,21 @@ import thumbnailMobile from '@assets/thumbnail-mobile.png';
 export default function App() {
   const calculatorProps = [
     {
+      key: nanoid(),
       title: 'אזורים קטנים',
       subtitle: 'פנים • מפשעות • בית שחי',
       states: smallAreasStates,
       sliderRanges: RANGES.SMALL_AREAS,
     },
     {
+      key: nanoid(),
       title: 'אזורים גדולים',
       subtitle: 'רגליים • ידיים • בטן • גב',
       states: largeAreasStates,
       sliderRanges: RANGES.LARGE_AREAS,
     },
     {
+      key: nanoid(),
       title: 'כל הגוף',
       subtitle: 'נשים • גברים',
       states: allBodyStates,
@@ -61,7 +65,7 @@ export default function App() {
       <div className='p-4 lg:px-0 w-full h-full flex flex-col items-center gap-2'>
         <div className='flex gap-4 max-lg:flex-col max-[425px]:w-full max-lg:w-80 w-full'>
           {calculatorProps.map((props) => (
-            <CalculatorBlock key={crypto.randomUUID()} {...props} />
+            <CalculatorBlock {...props} />
           ))}
         </div>
         <div className='w-full flex justify-center'>

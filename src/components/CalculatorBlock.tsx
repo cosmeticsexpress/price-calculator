@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { RecoilState, RecoilValueReadOnly, useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
@@ -36,6 +37,7 @@ export default function CalculatorBlock({
 
   const sliderProps = [
     {
+      key: nanoid(),
       label: 'זמן עבודה לטיפול',
       min: appointmentDuration.min,
       max: appointmentDuration.max,
@@ -43,6 +45,7 @@ export default function CalculatorBlock({
       outputRenderer: (value: number) => `${value} דקות`,
     },
     {
+      key: nanoid(),
       label: 'תמחור לטיפול בודד',
       min: appointmentPrice.min,
       max: appointmentPrice.max,
@@ -50,6 +53,7 @@ export default function CalculatorBlock({
       outputRenderer: (value: number) => formatCurrency(value),
     },
     {
+      key: nanoid(),
       label: 'שעות עבודה יומיות',
       min: workingHours ? workingHours.min : WORKING_HOURS.min,
       max: workingHours ? workingHours.max : WORKING_HOURS.max,
@@ -63,20 +67,24 @@ export default function CalculatorBlock({
 
   const textFieldProps = [
     {
+      key: nanoid(),
       label: 'רווח מטיפול יחיד',
       state: appointmentPriceState,
       isCurrency: true,
     },
     {
+      key: nanoid(),
       label: 'רווח מיום עבודה',
       state: dayEarningsState,
       isCurrency: true,
     },
     {
+      key: nanoid(),
       label: 'ימי עבודה חודשיים',
       state: monthWorkdaysState,
     },
     {
+      key: nanoid(),
       label: 'רווח מחודש עבודה',
       state: monthEarningsState,
       isCurrency: true,
@@ -87,7 +95,7 @@ export default function CalculatorBlock({
     word,
     <span
       className={[goldGradientText, 'font-black'].join(' ').trim()}
-      key={crypto.randomUUID()}
+      key={nanoid()}
     >
       •
     </span>,
