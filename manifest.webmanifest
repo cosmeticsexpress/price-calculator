@@ -1,0 +1,13 @@
+{
+  "name": "Cosmetics Express Price Calculator Calculator",
+  "short_name": "Price Calculator",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "type": "image/ico",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/price-calculator/",
+  "display": "fullscreen"
+}
