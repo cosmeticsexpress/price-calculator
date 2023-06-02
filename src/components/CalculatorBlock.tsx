@@ -1,21 +1,16 @@
 import { nanoid } from 'nanoid';
-import { RecoilState, RecoilValueReadOnly, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
 import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
 import { AreaRanges, WORKING_HOURS, goldGradientText } from '@utils/values';
 import { formatCurrency } from '@utils/numberFormat';
+import CalculatorStates from '@/utils/CalculatorStates';
 
-interface ICalculatorBlockProps {
+export interface ICalculatorBlockProps {
   title?: string;
   subtitle?: string;
-  states: {
-    appointmentDurationState: RecoilState<number>;
-    appointmentPriceState: RecoilState<number>;
-    workingHoursState: RecoilState<number>;
-    dayEarningsState: RecoilValueReadOnly<number>;
-    monthEarningsState: RecoilValueReadOnly<number>;
-  };
+  states: CalculatorStates;
   sliderRanges: AreaRanges;
 }
 
