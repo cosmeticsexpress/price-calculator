@@ -53,13 +53,13 @@ export default function App() {
       style={{
         background: `url('${backgroundImage}')`,
         backgroundAttachment: 'fixed',
-        backgroundRepeat: 'repeat',
+        backgroundSize: 'cover',
       }}
       className='flex flex-col items-center gap-2 w-full h-full min-h-screen [&>*]:max-w-2xl'
     >
       <picture className='max-lg:max-w-xs'>
-        <source media='(min-width: 425px)' srcSet={thumbnailDesktop} />
-        <img srcSet={thumbnailMobile} />
+        <source media='(max-width: 425px)' srcSet={thumbnailMobile} />
+        <img srcSet={thumbnailDesktop} alt='Banner image' />
       </picture>
 
       <div className='p-4 lg:px-0 w-full h-full flex flex-col items-center gap-2'>
