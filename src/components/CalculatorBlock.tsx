@@ -106,8 +106,8 @@ export default function CalculatorBlock({
           ))}
         </h3>
       </div>
-      <SliderGroup sliderProps={sliderProps} />
-      <TextFieldGroup textFieldProps={textFieldProps} />
+      <SliderGroup>{sliderProps}</SliderGroup>
+      <TextFieldGroup>{textFieldProps}</TextFieldGroup>
     </section>
   );
 }

@@ -2,7 +2,7 @@ import { RecoilState, RecoilValue } from 'recoil';
 import ReadonlyTextField from '@components/ReadonlyTextField';
 
 interface TextFieldGroupProps {
-  textFieldProps: {
+  children: {
     state: RecoilValue<number> | RecoilState<number>;
     label: string;
     isCurrency?: boolean;
@@ -10,12 +10,10 @@ interface TextFieldGroupProps {
   }[];
 }
 
-export default function TextFieldGroup({
-  textFieldProps,
-}: TextFieldGroupProps) {
+export default function TextFieldGroup({ children }: TextFieldGroupProps) {
   return (
     <section className='grid grid-cols-2 gap-2 w-full'>
-      {textFieldProps.map(({ state, label, isCurrency, key }) => (
+      {children.map(({ state, label, isCurrency, key }) => (
         <div
           key={key}
           className='[&>output]:last:bg-gold-gradient [&>output]:last:text-white flex flex-col justify-between items-center w-full text-center'
