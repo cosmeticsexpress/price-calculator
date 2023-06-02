@@ -57,9 +57,18 @@ export default function App() {
       }}
       className='flex flex-col items-center gap-2 w-full h-full min-h-screen [&>*]:max-w-2xl'
     >
-      <picture className='max-lg:max-w-xs'>
-        <source media='(max-width: 425px)' srcSet={thumbnailMobile} />
-        <img srcSet={thumbnailDesktop} alt='Banner image' />
+      <picture>
+        <source
+          media='(max-width: 425px)'
+          width={425}
+          srcSet={thumbnailMobile}
+        />
+        <source
+          media='(min-width: 426px)'
+          width={672}
+          srcSet={thumbnailDesktop}
+        />
+        <img src={thumbnailDesktop} alt='Banner image' height='auto' />
       </picture>
 
       <div className='p-4 lg:px-0 w-full h-full flex flex-col items-center gap-2'>
