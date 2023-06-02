@@ -10,7 +10,7 @@ import { MinMax, RANGES, WORKING_HOURS } from '@utils/values';
 import backgroundImage from '@assets/background.jpg';
 import thumbnailDesktop from '@assets/thumbnail-desktop.png';
 import thumbnailMobile from '@assets/thumbnail-mobile.png';
-import ReadonlyTextField from './components/ReadonlyTextField';
+import ReadonlyTextField from '@components/ReadonlyTextField';
 
 export default function App() {
   const calculatorProps = [
@@ -87,9 +87,9 @@ export default function App() {
           className='w-full flex flex-col items-center'
           title='סה״כ רווח חודשי:'
         >
-          <strong className='text-center'>
-            * חישוב הרווח ביום עבודה כולל חילוק התוצאה המתקבלת, ולוקח בחשבון את
-            זמני ההפסקות ביום. חישוב זה חל גם על הרווח בחודש עבודה.
+          <strong className='text-center text-sm'>
+            *המחשבון פועל בצורה לוגית חכמה וכולל התחשבות בזמני הפסקה ואורך זמן
+            טיפול ממוצע
           </strong>
           <h4>סה״כ רווח חודשי:</h4>
           <ReadonlyTextField
