@@ -76,7 +76,7 @@ export default function App() {
         />
       </picture>
 
-      <div className='p-4 min-[672px]:px-0 w-full h-full flex flex-col items-center gap-2'>
+      <div className='py-4 max-[672px]:p-4 w-full h-full flex flex-col items-center gap-2'>
         <div className='flex gap-4 max-[672px]:flex-col max-[425px]:w-full w-full'>
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
