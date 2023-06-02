@@ -55,6 +55,7 @@ export default function App() {
         background: `url('${backgroundImage}')`,
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
       className='flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-2xl'
     >
