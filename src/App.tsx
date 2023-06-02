@@ -6,7 +6,7 @@ import {
   allBodyStates,
   totalMonthEarningsState,
 } from '@utils/states';
-import { MinMax, RANGES, WORKING_HOURS, goldGradient } from '@utils/values';
+import { MinMax, RANGES, WORKING_HOURS } from '@utils/values';
 import backgroundImage from '@assets/background.jpg';
 import thumbnailDesktop from '@assets/thumbnail-desktop.png';
 import thumbnailMobile from '@assets/thumbnail-mobile.png';
@@ -90,7 +90,7 @@ export default function App() {
           <ReadonlyTextField
             isCurrency
             state={totalMonthEarningsState}
-            className={`${goldGradient} text-white border text-center rounded-sm m-1 p-1 w-full`}
+            className='bg-gold-gradient text-white border text-center rounded-sm m-1 p-1 w-full'
           />
         </section>
       </div>

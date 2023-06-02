@@ -57,13 +57,9 @@ export const DAY_EARNINGS_DIVISOR: { [Area in Areas]: number } = {
   ALL_BODY: 2.3,
 };
 
-export const goldGradient = 'bg-gradient-to-r from-gold-300 to-gold-500';
-export const goldGradientText = `${goldGradient} text-transparent bg-clip-text`;
 export default {
   MONTH_WORKDAYS,
   RANGES,
   WORKING_HOURS,
-  goldGradient,
-  goldGradientText,
   DAY_EARNINGS_DIVISOR,
 };

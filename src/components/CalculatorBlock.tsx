@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
 import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
-import { AreaRanges, WORKING_HOURS, goldGradientText } from '@utils/values';
+import { AreaRanges, WORKING_HOURS } from '@utils/values';
 import { formatCurrency } from '@utils/numberFormat';
 import CalculatorStates from '@/utils/CalculatorStates';
 
@@ -88,10 +88,7 @@ export default function CalculatorBlock({
 
   const styledSubtitle = subtitle?.split('•').flatMap((word) => [
     word,
-    <span
-      className={[goldGradientText, 'font-black'].join(' ').trim()}
-      key={nanoid()}
-    >
+    <span className='font-black text-gold-gradient' key={nanoid()}>
       •
     </span>,
   ]);
@@ -103,9 +100,7 @@ export default function CalculatorBlock({
       title={title}
     >
       <div className='text-center'>
-        <h2 className={`${goldGradientText} font-semibold text-2xl`}>
-          {title}
-        </h2>
+        <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>{styledSubtitle}</h3>
       </div>
       <SliderGroup sliderProps={sliderProps} />
