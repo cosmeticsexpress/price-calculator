@@ -103,16 +103,17 @@ export default function CalculatorBlock({
   styledSubtitle?.pop();
 
   return (
-    <section className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'>
+    <section
+      className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'
+      title={title}
+    >
       <div className='text-center'>
         <h2 className={`${goldGradientText} font-semibold text-2xl`}>
           {title}
         </h2>
         <h3 className='text-lg font-semibold'>{styledSubtitle}</h3>
       </div>
-
       <SliderGroup sliderProps={sliderProps} />
-
       <TextFieldGroup textFieldProps={textFieldProps} />
     </section>
   );

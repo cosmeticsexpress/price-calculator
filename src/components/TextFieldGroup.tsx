@@ -20,7 +20,7 @@ export default function TextFieldGroup({
           key={key}
           className={`[&>output]:last:bg-gradient-to-r [&>output]:last:from-gold-300 [&>output]:last:to-gold-500 [&>output]:last:text-white flex flex-col items-center w-full`}
         >
-          <span className='text-sm'>{label}:</span>
+          <h4 className='text-sm'>{label}:</h4>
           <ReadonlyTextField
             state={state}
             isCurrency={isCurrency}
