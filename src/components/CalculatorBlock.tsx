@@ -96,7 +96,9 @@ export default function CalculatorBlock({
         <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>
           {reactStringReplace(subtitle, '•', (match) => (
-            <span className='font-black text-gold-gradient'>{match}</span>
+            <span className='font-black text-gold-gradient' key={nanoid()}>
+              {match}
+            </span>
           ))}
         </h3>
       </div>
