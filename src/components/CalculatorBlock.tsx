@@ -6,6 +6,7 @@ import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
 import { AreaRanges, WORKING_HOURS } from '@utils/values';
 import { formatCurrency } from '@utils/numberFormat';
 import CalculatorStates from '@/utils/CalculatorStates';
+import reactStringReplace from 'react-string-replace';
 
 export interface CalculatorBlockProps {
   title?: string;
@@ -86,14 +87,6 @@ export default function CalculatorBlock({
     },
   ];
 
-  const styledSubtitle = subtitle?.split('•').flatMap((word) => [
-    word,
-    <span className='font-black text-gold-gradient' key={nanoid()}>
-      •
-    </span>,
-  ]);
-  styledSubtitle?.pop();
-
   return (
     <section
       className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'
@@ -101,7 +94,11 @@ export default function CalculatorBlock({
     >
       <div className='text-center'>
         <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
-        <h3 className='text-lg font-semibold'>{styledSubtitle}</h3>
+        <h3 className='text-lg font-semibold'>
+          {reactStringReplace(subtitle, '•', (match) => (
+            <span className='font-black text-gold-gradient'>{match}</span>
+          ))}
+        </h3>
       </div>
       <SliderGroup sliderProps={sliderProps} />
       <TextFieldGroup textFieldProps={textFieldProps} />
