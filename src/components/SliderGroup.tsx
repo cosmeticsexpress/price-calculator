@@ -1,7 +1,7 @@
 import { RecoilState } from 'recoil';
 import Slider from '@components/Slider';
 
-interface ISliderGroupProps {
+interface SliderGroupProps {
   sliderProps: {
     label: string;
     min: number;
@@ -11,7 +11,7 @@ interface ISliderGroupProps {
   }[];
 }
 
-export default function SliderGroup({ sliderProps }: ISliderGroupProps) {
+export default function SliderGroup({ sliderProps }: SliderGroupProps) {
   return (
     <div className='flex flex-col gap-6 w-full'>
       {sliderProps.map(({ label, key, ...slider }) => (

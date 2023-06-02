@@ -7,7 +7,7 @@ import { AreaRanges, WORKING_HOURS } from '@utils/values';
 import { formatCurrency } from '@utils/numberFormat';
 import CalculatorStates from '@/utils/CalculatorStates';
 
-export interface ICalculatorBlockProps {
+export interface CalculatorBlockProps {
   title?: string;
   subtitle?: string;
   states: CalculatorStates;
@@ -19,7 +19,7 @@ export default function CalculatorBlock({
   subtitle,
   states,
   sliderRanges,
-}: ICalculatorBlockProps) {
+}: CalculatorBlockProps) {
   const {
     appointmentDurationState,
     appointmentPriceState,
