@@ -1,20 +1,17 @@
-import { RecoilState, RecoilValueReadOnly, useRecoilValue } from 'recoil';
+import { nanoid } from 'nanoid';
+import { useRecoilValue } from 'recoil';
 import SliderGroup from '@components/SliderGroup';
 import TextFieldGroup from '@components/TextFieldGroup';
 import { monthWorkdaysState, totalWorkingHoursState } from '@utils/states';
-import { AreaRanges, WORKING_HOURS, goldGradientText } from '@utils/values';
+import { AreaRanges, WORKING_HOURS } from '@utils/values';
 import { formatCurrency } from '@utils/numberFormat';
+import CalculatorStates from '@/utils/CalculatorStates';
+import reactStringReplace from 'react-string-replace';
 
-interface ICalculatorBlockProps {
+export interface CalculatorBlockProps {
   title?: string;
   subtitle?: string;
-  states: {
-    appointmentDurationState: RecoilState<number>;
-    appointmentPriceState: RecoilState<number>;
-    workingHoursState: RecoilState<number>;
-    dayEarningsState: RecoilValueReadOnly<number>;
-    monthEarningsState: RecoilValueReadOnly<number>;
-  };
+  states: CalculatorStates;
   sliderRanges: AreaRanges;
 }
 
@@ -23,7 +20,7 @@ export default function CalculatorBlock({
   subtitle,
   states,
   sliderRanges,
-}: ICalculatorBlockProps) {
+}: CalculatorBlockProps) {
   const {
     appointmentDurationState,
     appointmentPriceState,
@@ -36,6 +33,7 @@ export default function CalculatorBlock({
 
   const sliderProps = [
     {
+      key: nanoid(),
       label: 'זמן עבודה לטיפול',
       min: appointmentDuration.min,
       max: appointmentDuration.max,
@@ -43,6 +41,7 @@ export default function CalculatorBlock({
       outputRenderer: (value: number) => `${value} דקות`,
     },
     {
+      key: nanoid(),
       label: 'תמחור לטיפול בודד',
       min: appointmentPrice.min,
       max: appointmentPrice.max,
@@ -50,6 +49,7 @@ export default function CalculatorBlock({
       outputRenderer: (value: number) => formatCurrency(value),
     },
     {
+      key: nanoid(),
       label: 'שעות עבודה יומיות',
       min: workingHours ? workingHours.min : WORKING_HOURS.min,
       max: workingHours ? workingHours.max : WORKING_HOURS.max,
@@ -63,48 +63,44 @@ export default function CalculatorBlock({
 
   const textFieldProps = [
     {
+      key: nanoid(),
       label: 'רווח מטיפול יחיד',
       state: appointmentPriceState,
       isCurrency: true,
     },
     {
+      key: nanoid(),
       label: 'רווח מיום עבודה',
       state: dayEarningsState,
       isCurrency: true,
     },
     {
+      key: nanoid(),
       label: 'ימי עבודה חודשיים',
       state: monthWorkdaysState,
     },
     {
+      key: nanoid(),
       label: 'רווח מחודש עבודה',
       state: monthEarningsState,
       isCurrency: true,
     },
   ];
 
-  const styledSubtitle = subtitle?.split('•').flatMap((word) => [
-    word,
-    <span
-      className={[goldGradientText, 'font-black'].join(' ').trim()}
-      key={crypto.randomUUID()}
-    >
-      •
-    </span>,
-  ]);
-  styledSubtitle?.pop();
-
   return (
-    <section className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'>
+    <section
+      className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'
+      title={title}
+    >
       <div className='text-center'>
-        <h2 className={`${goldGradientText} font-semibold text-2xl`}>
-          {title}
-        </h2>
-        <h3 className='text-lg font-semibold'>{styledSubtitle}</h3>
+        <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
+        <h3 className='text-lg font-semibold'>
+          {reactStringReplace(subtitle, '•', (match) => (
+            <span className='font-black text-gold-gradient'>{match}</span>
+          ))}
+        </h3>
       </div>
-
       <SliderGroup sliderProps={sliderProps} />
-
       <TextFieldGroup textFieldProps={textFieldProps} />
     </section>
   );

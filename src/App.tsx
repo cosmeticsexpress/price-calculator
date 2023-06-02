@@ -1,30 +1,35 @@
+import { nanoid } from 'nanoid';
 import CalculatorBlock from '@components/CalculatorBlock';
-import MonthlyEarningsDisplay from '@components/MonthlyEarningsDisplay';
 import {
   smallAreasStates,
   largeAreasStates,
   allBodyStates,
+  totalMonthEarningsState,
 } from '@utils/states';
 import { MinMax, RANGES, WORKING_HOURS } from '@utils/values';
 import backgroundImage from '@assets/background.jpg';
 import thumbnailDesktop from '@assets/thumbnail-desktop.png';
 import thumbnailMobile from '@assets/thumbnail-mobile.png';
+import ReadonlyTextField from './components/ReadonlyTextField';
 
 export default function App() {
   const calculatorProps = [
     {
+      key: nanoid(),
       title: 'אזורים קטנים',
       subtitle: 'פנים • מפשעות • בית שחי',
       states: smallAreasStates,
       sliderRanges: RANGES.SMALL_AREAS,
     },
     {
+      key: nanoid(),
       title: 'אזורים גדולים',
       subtitle: 'רגליים • ידיים • בטן • גב',
       states: largeAreasStates,
       sliderRanges: RANGES.LARGE_AREAS,
     },
     {
+      key: nanoid(),
       title: 'כל הגוף',
       subtitle: 'נשים • גברים',
       states: allBodyStates,
@@ -49,24 +54,50 @@ export default function App() {
       style={{
         background: `url('${backgroundImage}')`,
         backgroundAttachment: 'fixed',
-        backgroundRepeat: 'repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
-      className='flex flex-col items-center gap-2 w-full h-full min-h-screen [&>*]:max-w-2xl'
+      className='flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-2xl'
     >
-      <picture className='max-lg:max-w-xs'>
-        <source media='(min-width: 425px)' srcSet={thumbnailDesktop} />
-        <img srcSet={thumbnailMobile} />
+      <picture>
+        <source
+          media='(max-width: 425px)'
+          width={425}
+          srcSet={thumbnailMobile}
+        />
+        <source
+          media='(min-width: 426px)'
+          width={672}
+          srcSet={thumbnailDesktop}
+        />
+        <img
+          src={thumbnailDesktop}
+          alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
+          height='auto'
+        />
       </picture>
 
-      <div className='p-4 lg:px-0 w-full h-full flex flex-col items-center gap-2'>
-        <div className='flex gap-4 max-lg:flex-col max-[425px]:w-full max-lg:w-80 w-full'>
+      <div className='py-4 max-[672px]:p-4 w-full h-full flex flex-col items-center gap-2'>
+        <div className='flex gap-4 max-[672px]:flex-col max-[425px]:w-full w-full'>
           {calculatorProps.map((props) => (
-            <CalculatorBlock key={crypto.randomUUID()} {...props} />
+            <CalculatorBlock {...props} />
           ))}
         </div>
-        <div className='w-full flex justify-center'>
-          <MonthlyEarningsDisplay />
-        </div>
+        <section
+          className='w-full flex flex-col items-center'
+          title='סה״כ רווח חודשי:'
+        >
+          <strong className='text-center'>
+            * חישוב הרווח ביום עבודה כולל חילוק התוצאה המתקבלת, ולוקח בחשבון את
+            זמני ההפסקות ביום. חישוב זה חל גם על הרווח בחודש עבודה.
+          </strong>
+          <h4>סה״כ רווח חודשי:</h4>
+          <ReadonlyTextField
+            isCurrency
+            state={totalMonthEarningsState}
+            className='bg-gold-gradient text-white border text-center rounded-sm m-1 p-1 w-full'
+          />
+        </section>
       </div>
     </main>
   );

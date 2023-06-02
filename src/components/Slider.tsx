@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useRecoilState, RecoilState } from 'recoil';
 import { Range, getTrackBackground, Direction } from 'react-range';
 
-interface ISliderProps {
+interface SliderProps {
   min: number;
   max: number;
   state: RecoilState<number>;
@@ -15,7 +15,7 @@ export default function Slider({
   max,
   state,
   outputRenderer = (value) => value,
-}: ISliderProps) {
+}: SliderProps) {
   const [value, setValue] = useRecoilState(state);
   const [localValue, setLocalValue] = useState(value);
   const output = outputRenderer(localValue);

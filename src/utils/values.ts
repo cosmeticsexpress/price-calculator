@@ -5,17 +5,15 @@ export type MinMax = {
   max: number;
 };
 
+export type Areas = 'SMALL_AREAS' | 'LARGE_AREAS' | 'ALL_BODY';
+
 export interface AreaRanges {
   appointmentDuration: MinMax;
   appointmentPrice: MinMax;
   workingHours?: MinMax;
 }
 
-export const RANGES: {
-  SMALL_AREAS: AreaRanges;
-  LARGE_AREAS: AreaRanges;
-  ALL_BODY: AreaRanges;
-} = {
+export const RANGES: { [Area in Areas]: AreaRanges } = {
   SMALL_AREAS: {
     appointmentDuration: {
       min: 5,
@@ -53,12 +51,15 @@ export const WORKING_HOURS: MinMax = {
   max: 8,
 };
 
-export const goldGradient = 'bg-gradient-to-r from-gold-300 to-gold-500';
-export const goldGradientText = `${goldGradient} text-transparent bg-clip-text`;
+export const DAY_EARNINGS_DIVISOR: { [Area in Areas]: number } = {
+  SMALL_AREAS: 3,
+  LARGE_AREAS: 2.5,
+  ALL_BODY: 2.3,
+};
+
 export default {
   MONTH_WORKDAYS,
   RANGES,
   WORKING_HOURS,
-  goldGradient,
-  goldGradientText,
+  DAY_EARNINGS_DIVISOR,
 };

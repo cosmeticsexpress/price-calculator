@@ -14,3 +14,12 @@
     url(/fonts/FbSpoiler-Bold.otf) format('opentype');
   font-weight: normal;
 }
+
+@layer utilities {
+  .bg-gold-gradient {
+    @apply bg-gradient-to-r from-gold-300 to-gold-500;
+  }
+  .text-gold-gradient {
+    @apply bg-gold-gradient text-transparent bg-clip-text;
+  }
+}

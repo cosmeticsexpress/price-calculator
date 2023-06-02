@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import { RecoilValue, useRecoilValue } from 'recoil';
 import { formatCurrency, formatNumber } from '@utils/numberFormat';
 
-export interface IReadonlyTextFieldProps {
+export interface ReadonlyTextFieldProps {
   className?: string;
   style?: CSSProperties;
   state: RecoilValue<string | number>;
@@ -14,7 +14,7 @@ export default function ReadonlyTextField({
   className = '',
   style = {},
   isCurrency = false,
-}: IReadonlyTextFieldProps) {
+}: ReadonlyTextFieldProps) {
   const value = useRecoilValue(state);
   const format = isCurrency ? formatCurrency : formatNumber;
   return (
