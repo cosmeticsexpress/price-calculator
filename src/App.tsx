@@ -39,13 +39,10 @@ export default function App() {
 
   calculatorProps.forEach(({ sliderRanges }) => {
     const { min, max } = WORKING_HOURS;
-    sliderRanges = {
-      ...sliderRanges,
-      workingHours: {
-        max: max - calculatorProps.length * min + min,
-        min,
-      } satisfies MinMax,
-    };
+    sliderRanges.workingHours = {
+      max: max - calculatorProps.length * min + min,
+      min,
+    } satisfies MinMax;
   });
 
   return (

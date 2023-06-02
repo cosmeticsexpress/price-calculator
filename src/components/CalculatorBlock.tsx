@@ -54,10 +54,11 @@ export default function CalculatorBlock({
       min: workingHours ? workingHours.min : WORKING_HOURS.min,
       max: workingHours ? workingHours.max : WORKING_HOURS.max,
       state: workingHoursState,
-      outputRenderer: (value: number) =>
-        `${value} (סה״כ ${useRecoilValue(totalWorkingHoursState)}/${
+      outputRenderer: function Component(value: number) {
+        return `${value} (סה״כ ${useRecoilValue(totalWorkingHoursState)}/${
           WORKING_HOURS.max
-        })`,
+        })`;
+      },
     },
   ];
 
@@ -95,9 +96,12 @@ export default function CalculatorBlock({
       <div className='text-center'>
         <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>
-          {reactStringReplace(subtitle, '•', (match) => (
-            <span className='font-black text-gold-gradient' key={nanoid()}>
-              {match}
+          {reactStringReplace(subtitle, ' • ', (match) => (
+            <span
+              className='font-black text-gold-gradient select-none'
+              key={nanoid()}
+            >
+              {` ${match} `}
             </span>
           ))}
         </h3>
