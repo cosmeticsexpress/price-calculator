@@ -18,9 +18,9 @@ export default function TextFieldGroup({
       {textFieldProps.map(({ state, label, isCurrency, key }) => (
         <div
           key={key}
-          className='[&>output]:last:bg-gold-gradient [&>output]:last:text-white flex flex-col items-center w-full'
+          className='[&>output]:last:bg-gold-gradient [&>output]:last:text-white flex flex-col justify-between items-center w-full text-center'
         >
-          <h4 className='text-sm'>{label}:</h4>
+          <h4>{label}:</h4>
           <ReadonlyTextField
             state={state}
             isCurrency={isCurrency}
