@@ -87,6 +87,10 @@ export default function App() {
           className='w-full flex flex-col items-center'
           title='סה״כ רווח חודשי:'
         >
+          <strong className='text-center'>
+            * חישוב הרווח ביום עבודה כולל חילוק התוצאה המתקבלת, ולוקח בחשבון את
+            זמני ההפסקות ביום. חישוב זה חל גם על הרווח בחודש עבודה.
+          </strong>
           <h4>סה״כ רווח חודשי:</h4>
           <ReadonlyTextField
             isCurrency
