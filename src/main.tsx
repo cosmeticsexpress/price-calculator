@@ -7,11 +7,7 @@ import './index.css';
 if (window.location.port) {
   if (location.hostname === 'localhost')
     document.title = 'localhost | Cosmetics Express';
-  else if (
-    location.hostname === '192.168.1.222' ||
-    location.hostname === '192.168.128.1'
-  )
-    document.title = 'local network | Cosmetics Express';
+  else document.title = 'local network | Cosmetics Express';
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
