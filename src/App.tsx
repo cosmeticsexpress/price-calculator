@@ -7,9 +7,9 @@ import {
   totalMonthEarningsState,
 } from '@utils/states';
 import { MinMax, RANGES, WORKING_HOURS } from '@utils/values';
-import backgroundImage from '@assets/background.jpg';
-import thumbnailDesktop from '@assets/thumbnail-desktop.png';
-import thumbnailMobile from '@assets/thumbnail-mobile.png';
+import backgroundImage from '@assets/background.webp';
+import thumbnailDesktop from '@assets/thumbnail-desktop.webp';
+import thumbnailMobile from '@assets/thumbnail-mobile.webp';
 import ReadonlyTextField from '@components/ReadonlyTextField';
 
 export default function App() {
@@ -58,19 +58,17 @@ export default function App() {
     >
       <picture>
         <source
+          type='image/webp'
           media='(max-width: 425px)'
           width={425}
+          height={651}
           srcSet={thumbnailMobile}
-        />
-        <source
-          media='(min-width: 426px)'
-          width={672}
-          srcSet={thumbnailDesktop}
         />
         <img
           src={thumbnailDesktop}
           alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
-          height='auto'
+          width={672}
+          height={343}
         />
       </picture>
 

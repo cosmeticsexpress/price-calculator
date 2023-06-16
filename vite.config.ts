@@ -53,6 +53,7 @@ export default defineConfig({
         theme_color: 'white',
         orientation: 'portrait',
         lang: 'he',
+        description: 'מחשבון רווחים לטיפולי לייזר',
       },
     }),
   ],
