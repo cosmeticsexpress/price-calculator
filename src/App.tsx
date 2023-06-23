@@ -160,10 +160,21 @@ export default function App() {
               value='מעוניין ב:'
               className='text-black p-1'
             >
-              <option value='thing'>thing</option>
+              <option value='מעוניין ב:' disabled>
+                מעוניין ב:
+              </option>
+              <option value='Eos Ice Pro'>Eos Ice Pro</option>
+              <option value='Eos Ice Premium Gold'>Eos Ice Premium Gold</option>
+              <option value='Eos Ice Premium'>Eos Ice Premium</option>
+              <option value='ICE-BERG'>ICE-BERG</option>
+              <option value='Multi Mona'>Multi Mona</option>
+              <option value='BEAM+'>BEAM+</option>
+              <option value='CryoSlim'>CryoSlim</option>
+              <option value='Scul Up Platinum'>Scul Up Platinum</option>
             </select>
             <div className='flex gap-2'>
               <input
+                required
                 type='checkbox'
                 name='terms of service confirmation'
                 id='tos'
