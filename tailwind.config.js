@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"FbSpoiler Regular"', ...fontFamily.sans],
+        rubik: ['Rubik'],
       },
       colors: {
         gold: {
