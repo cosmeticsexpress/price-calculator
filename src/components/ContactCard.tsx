@@ -57,35 +57,35 @@ export default function ContactCard() {
         </h4>
         <form
           className='grid container:grid-cols-3 gap-2'
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(e.target.elements);
-          }}
+          action={`https://formsubmit.co/${
+            import.meta.env.VITE_FORM_EMAIL ?? COSMETICSEXPRESS_EMAIL
+          }`}
+          method='POST'
         >
           <input
             className='text-black p-1'
             type='text'
-            name='fullname'
+            name='שם מלא'
             id='fullname'
             placeholder='שם מלא'
           />
           <input
             className='text-black p-1'
             type='tel'
-            name='phonenumber'
+            name='מספר טלפון'
             id='phonenumber'
             placeholder='מספר טלפון'
           />
           <input
             className='text-black p-1'
             type='email'
-            name='email'
+            name='אימייל'
             id='email'
             placeholder='אימייל'
           />
           <Select
             options={options}
-            name='interested-in'
+            name='מעוניין ב־'
             id='interested-in'
             value='מעוניין ב:'
             className='text-black'
@@ -94,7 +94,6 @@ export default function ContactCard() {
             <input
               required
               type='checkbox'
-              name='tosconfirm'
               id='tosconfirm'
               className='bg-white w-5'
             />
