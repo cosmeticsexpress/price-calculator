@@ -5,6 +5,11 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa6';
 import Select from '@components/Select';
+import {
+  COSMETICSEXPRESS_EMAIL,
+  COSMETICSEXPRESS_LOCATION_HE,
+  COSMETICSEXPRESS_PHONE,
+} from '@/utils/values';
 
 export default function ContactCard() {
   const options = [
@@ -18,31 +23,29 @@ export default function ContactCard() {
     'Scul Up Platinum',
   ];
 
-  console.log(options);
-
   return (
     <article className='bg-gold-400 w-full text-black font-rubik py-4'>
       <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
         <div>
-          <a href='tel:+972-3-556-6104'>
+          <a href={`tel:${COSMETICSEXPRESS_PHONE}`} target='_blank'>
             <FaPhone className='text-black inline m-1' />
             03-5566104
           </a>
         </div>
         <div>
-          <a href='https://wa.me/97235566104'>
+          <a href={`https://wa.me/${COSMETICSEXPRESS_PHONE}`} target='_blank'>
             <FaWhatsapp className='text-white inline text-2xl ml-1 p-1 bg-green-600 rounded-full aspect-square overflow-visible' />
             שלח הודעה בוואטסאפ
           </a>
         </div>
         <div>
           <FaLocationDot className='text-black inline m-1' />
-          רח׳ ההגנה 13, ראשון לציון
+          {COSMETICSEXPRESS_LOCATION_HE}
         </div>
         <div>
-          <a href='mailto:cosmeticsexpress1@gmail.com'>
+          <a href={`mailto:${COSMETICSEXPRESS_EMAIL}`} target='_blank'>
             <FaEnvelope className='text-black inline m-1' />
-            cosmeticsexpress01@gmail.com
+            {COSMETICSEXPRESS_EMAIL}
           </a>
         </div>
       </section>
