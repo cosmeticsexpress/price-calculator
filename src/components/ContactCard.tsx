@@ -4,8 +4,22 @@ import {
   FaPhone,
   FaWhatsapp,
 } from 'react-icons/fa6';
+import Select from '@components/Select';
 
 export default function ContactCard() {
+  const options = [
+    'Eos Ice Pro',
+    'Eos Ice Premium Gold',
+    'Eos Ice Premium',
+    'ICE-BERG',
+    'Multi Mona',
+    'BEAM+',
+    'CryoSlim',
+    'Scul Up Platinum',
+  ];
+
+  console.log(options);
+
   return (
     <article className='bg-gold-400 w-full text-black font-rubik py-4'>
       <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
@@ -66,24 +80,13 @@ export default function ContactCard() {
             id='email'
             placeholder='אימייל'
           />
-          <select
-            name='select'
-            id='select'
+          <Select
+            options={options}
+            name='interested-in'
+            id='interested-in'
             value='מעוניין ב:'
-            className='text-black p-1'
-          >
-            <option value='מעוניין ב:' disabled>
-              מעוניין ב:
-            </option>
-            <option value='Eos Ice Pro'>Eos Ice Pro</option>
-            <option value='Eos Ice Premium Gold'>Eos Ice Premium Gold</option>
-            <option value='Eos Ice Premium'>Eos Ice Premium</option>
-            <option value='ICE-BERG'>ICE-BERG</option>
-            <option value='Multi Mona'>Multi Mona</option>
-            <option value='BEAM+'>BEAM+</option>
-            <option value='CryoSlim'>CryoSlim</option>
-            <option value='Scul Up Platinum'>Scul Up Platinum</option>
-          </select>
+            className='text-black'
+          />
           <div className='flex gap-2 text-start'>
             <input
               required
