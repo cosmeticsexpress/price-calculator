@@ -120,10 +120,8 @@ export default function App() {
             </a>
           </div>
           <div>
-            <a>
-              <FaLocationDot className='text-black inline m-1' />
-              רח׳ ההגנה 13, ראשון לציון
-            </a>
+            <FaLocationDot className='text-black inline m-1' />
+            רח׳ ההגנה 13, ראשון לציון
           </div>
           <div>
             <a href='mailto:cosmeticsexpress1@gmail.com'>
