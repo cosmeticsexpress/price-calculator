@@ -90,7 +90,7 @@ export default function CalculatorBlock({
 
   return (
     <section
-      className='border rounded-md bg-gray-50 p-3 flex flex-col gap-3 items-center w-full'
+      className='border rounded-md bg-gray-50 p-3 flex flex-col justify-between gap-3 items-center w-full'
       title={title}
     >
       <div className='text-center'>
@@ -106,8 +106,10 @@ export default function CalculatorBlock({
           ))}
         </h3>
       </div>
-      <SliderGroup>{sliderProps}</SliderGroup>
-      <TextFieldGroup>{textFieldProps}</TextFieldGroup>
+      <div className='w-full'>
+        <SliderGroup>{sliderProps}</SliderGroup>
+        <TextFieldGroup>{textFieldProps}</TextFieldGroup>
+      </div>
     </section>
   );
 }
