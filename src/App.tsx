@@ -79,7 +79,7 @@ export default function App() {
         className={`py-4 max-[${MAX_CONTAINER_WIDTH}px]:p-4 w-full h-full flex flex-col items-center gap-2`}
       >
         <div
-          className={`flex gap-4 max-[${MAX_CONTAINER_WIDTH}px]:flex-col max-[${MAX_MOBILE_WIDTH}px]:w-full w-full`}
+          className={`flex gap-4 max-[${MAX_CONTAINER_WIDTH}px]:flex-col w-full`}
         >
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
