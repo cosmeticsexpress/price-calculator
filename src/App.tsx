@@ -45,6 +45,9 @@ export default function App() {
     } satisfies MinMax;
   });
 
+  const MAX_MOBILE_WIDTH = 425,
+    MAX_CONTAINER_WIDTH = 672;
+
   return (
     <main
       dir='auto'
@@ -54,26 +57,30 @@ export default function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className='flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-2xl'
+      className={`flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-[${MAX_CONTAINER_WIDTH}px]`}
     >
       <picture>
         <source
           type='image/webp'
-          media='(max-width: 425px)'
-          width={425}
+          media={`(max-width: ${MAX_MOBILE_WIDTH}px)`}
+          width={MAX_MOBILE_WIDTH}
           height={651}
           srcSet={thumbnailMobile}
         />
         <img
           src={thumbnailDesktop}
           alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
-          width={672}
+          width={MAX_CONTAINER_WIDTH}
           height={343}
         />
       </picture>
 
-      <div className='py-4 max-[672px]:p-4 w-full h-full flex flex-col items-center gap-2'>
-        <div className='flex gap-4 max-[672px]:flex-col max-[425px]:w-full w-full'>
+      <div
+        className={`py-4 max-[${MAX_CONTAINER_WIDTH}px]:p-4 w-full h-full flex flex-col items-center gap-2`}
+      >
+        <div
+          className={`flex gap-4 max-[${MAX_CONTAINER_WIDTH}px]:flex-col max-[${MAX_MOBILE_WIDTH}px]:w-full w-full`}
+        >
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
           ))}
