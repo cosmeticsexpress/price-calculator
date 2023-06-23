@@ -1,5 +1,10 @@
 import { nanoid } from 'nanoid';
-import { FaPhone, FaLocationDot, FaEnvelope } from 'react-icons/fa6';
+import {
+  FaEnvelope,
+  FaLocationDot,
+  FaPhone,
+  FaWhatsapp,
+} from 'react-icons/fa6';
 
 import CalculatorBlock from '@components/CalculatorBlock';
 import {
@@ -102,29 +107,35 @@ export default function App() {
         </section>
       </div>
 
-      <section className='bg-gold-400 w-full text-white'>
-        <div className={`flex max-container:flex-col justify-around gap-2 p-2`}>
-          <p>
+      <article className='bg-gold-400 w-full text-white'>
+        <section className={`flex max-container:flex-col flex-wrap gap-2 p-2`}>
+          <div>
             <a href='tel:+972-3-556-6104'>
               <FaPhone className='text-black inline m-1' />
               03-5566104
             </a>
-          </p>
-          <p>
-            <a href=''>
+          </div>
+          <div>
+            <a href='https://wa.me/97235566104'>
+              <FaWhatsapp className='text-white inline text-2xl ml-1 p-1 bg-green-600 rounded-full aspect-square overflow-visible' />
+              שלח הודעה בוואטסאפ
+            </a>
+          </div>
+          <div>
+            <a>
               <FaLocationDot className='text-black inline m-1' />
               רח׳ ההגנה 13, ראשון לציון
             </a>
-          </p>
-          <p>
+          </div>
+          <div>
             <a href='mailto:cosmeticsexpress1@gmail.com'>
               <FaEnvelope className='text-black inline m-1' />
-              cosmeticsexpress1@gmail.com
+              cosmeticsexpress01@gmail.com
             </a>
-          </p>
-        </div>
+          </div>
+        </section>
 
-        <div className='p-2 text-center'>
+        <section className='p-2 text-center'>
           <h4>
             לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
             פרטים ונחזור אליך בהקדם:
@@ -188,8 +199,8 @@ export default function App() {
               className='bg-black cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
             />
           </form>
-        </div>
-      </section>
+        </section>
+      </article>
     </main>
   );
 }
