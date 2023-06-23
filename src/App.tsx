@@ -105,7 +105,7 @@ export default function App() {
         </section>
       </div>
 
-      <article className='bg-gold-400 w-full text-black font-rubik'>
+      <article className='bg-gold-400 w-full text-black font-rubik py-4'>
         <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
           <div>
             <a href='tel:+972-3-556-6104'>
@@ -132,7 +132,7 @@ export default function App() {
         </section>
 
         <section className='p-2 text-center'>
-          <h4>
+          <h4 className='mb-4'>
             לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
             פרטים ונחזור אליך בהקדם:
           </h4>
@@ -185,7 +185,7 @@ export default function App() {
                 type='checkbox'
                 name='terms of service confirmation'
                 id='tos'
-                className='bg-white w-8'
+                className='bg-white w-5'
               />
               <label htmlFor='tos'>אני מסכימ.ה לתנאי השימוש</label>
             </div>
