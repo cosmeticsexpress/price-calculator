@@ -1,4 +1,6 @@
 import { nanoid } from 'nanoid';
+import { FaPhone, FaLocationDot, FaEnvelope } from 'react-icons/fa6';
+
 import CalculatorBlock from '@components/CalculatorBlock';
 import {
   smallAreasStates,
@@ -57,7 +59,7 @@ export default function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className={`flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-[${MAX_CONTAINER_WIDTH}px]`}
+      className={`flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-screen-container`}
     >
       <picture>
         <source
@@ -76,11 +78,9 @@ export default function App() {
       </picture>
 
       <div
-        className={`py-4 max-[${MAX_CONTAINER_WIDTH}px]:p-4 w-full h-full flex flex-col items-center gap-2`}
+        className={`py-4 max-container:p-4 w-full h-full flex flex-col items-center gap-2`}
       >
-        <div
-          className={`flex gap-4 max-[${MAX_CONTAINER_WIDTH}px]:flex-col w-full`}
-        >
+        <div className={`flex gap-4 max-container:flex-col w-full`}>
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
           ))}
@@ -101,6 +101,84 @@ export default function App() {
           />
         </section>
       </div>
+
+      <section className='bg-gold-400 w-full text-white'>
+        <div className={`flex max-container:flex-col justify-around gap-2 p-2`}>
+          <p>
+            <a href='tel:+972-3-556-6104'>
+              <FaPhone className='text-black inline m-1' />
+              03-5566104
+            </a>
+          </p>
+          <p>
+            <a href=''>
+              <FaLocationDot className='text-black inline m-1' />
+              רח׳ ההגנה 13, ראשון לציון
+            </a>
+          </p>
+          <p>
+            <a href='mailto:cosmeticsexpress1@gmail.com'>
+              <FaEnvelope className='text-black inline m-1' />
+              cosmeticsexpress1@gmail.com
+            </a>
+          </p>
+        </div>
+
+        <div className='p-2 text-center'>
+          <h4>
+            לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
+            פרטים ונחזור אליך בהקדם:
+          </h4>
+          <form
+            className={`grid container:grid-cols-3 gap-2`}
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <input
+              className='text-black p-1'
+              type='text'
+              name='full name'
+              id='fullname'
+              placeholder='שם מלא'
+            />
+            <input
+              className='text-black p-1'
+              type='tel'
+              name='phone number'
+              id='phonenumber'
+              placeholder='מספר טלפון'
+            />
+            <input
+              className='text-black p-1'
+              type='email'
+              name='email'
+              id='email'
+              placeholder='אימייל'
+            />
+            <select
+              name='select'
+              id='select'
+              value='מעוניין ב:'
+              className='text-black p-1'
+            >
+              <option value='thing'>thing</option>
+            </select>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                name='terms of service confirmation'
+                id='tos'
+                className='bg-red-500'
+              />
+              <label htmlFor='tos'>אני מסכימ.ה לתנאי השימוש</label>
+            </div>
+            <input
+              type='submit'
+              value='שליחה'
+              className='bg-black cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
+            />
+          </form>
+        </div>
+      </section>
     </main>
   );
 }
