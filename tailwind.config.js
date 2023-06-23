@@ -15,6 +15,10 @@ export default {
           900: '#231F20',
         },
       },
+      screens: {
+        mobile: '425px',
+        container: '672px',
+      },
     },
   },
   plugins: [],
