@@ -64,7 +64,7 @@ export default function App() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className={`flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-screen-container`}
+      className='flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-screen-container'
     >
       <picture>
         <source
@@ -82,10 +82,8 @@ export default function App() {
         />
       </picture>
 
-      <div
-        className={`py-4 max-container:p-4 w-full h-full flex flex-col items-center gap-2`}
-      >
-        <div className={`flex gap-4 max-container:flex-col w-full`}>
+      <div className='py-4 max-container:p-4 w-full h-full flex flex-col items-center gap-2'>
+        <div className='flex gap-4 max-container:flex-col w-full'>
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
           ))}
@@ -108,7 +106,7 @@ export default function App() {
       </div>
 
       <article className='bg-gold-400 w-full text-white'>
-        <section className={`flex max-container:flex-col flex-wrap gap-2 p-2`}>
+        <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
           <div>
             <a href='tel:+972-3-556-6104'>
               <FaPhone className='text-black inline m-1' />
@@ -141,7 +139,7 @@ export default function App() {
             פרטים ונחזור אליך בהקדם:
           </h4>
           <form
-            className={`grid container:grid-cols-3 gap-2`}
+            className='grid container:grid-cols-3 gap-2'
             onSubmit={(e) => e.preventDefault()}
           >
             <input
