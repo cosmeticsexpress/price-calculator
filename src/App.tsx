@@ -105,7 +105,7 @@ export default function App() {
         </section>
       </div>
 
-      <article className='bg-gold-400 w-full text-white'>
+      <article className='bg-gold-400 w-full text-black font-rubik'>
         <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
           <div>
             <a href='tel:+972-3-556-6104'>
@@ -185,14 +185,14 @@ export default function App() {
                 type='checkbox'
                 name='terms of service confirmation'
                 id='tos'
-                className='bg-red-500'
+                className='bg-white w-8'
               />
               <label htmlFor='tos'>אני מסכימ.ה לתנאי השימוש</label>
             </div>
             <input
               type='submit'
               value='שליחה'
-              className='bg-black cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
+              className='bg-black text-white rounded-sm cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
             />
           </form>
         </section>
