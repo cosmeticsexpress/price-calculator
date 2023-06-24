@@ -1,11 +1,9 @@
 import { nanoid } from 'nanoid';
-import { useState, CSSProperties } from 'react';
-interface P {
+import { HTMLAttributes, useState } from 'react';
+
+interface P extends HTMLAttributes<HTMLSelectElement> {
   options?: string[] | { label: string; value: string }[];
   value?: string;
-  className?: string;
-  style?: CSSProperties;
-  id?: string;
   name?: string;
 }
 
@@ -16,10 +14,12 @@ export default function Select({
   style,
   id,
   name,
+  title,
 }: P) {
   const [currentValue, setValue] = useState(value);
   return (
     <select
+      title={title}
       id={id}
       name={name}
       value={currentValue}
