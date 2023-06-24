@@ -24,10 +24,10 @@ export default function ContactCard() {
 
   return (
     <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
-      <section className='flex max-container:flex-col flex-wrap gap-2'>
+      <section className='flex max-container:flex-col flex-wrap gap-2 text-start w-full'>
         <div>
           <a href='tel:97235566104' target='_blank'>
-            <FaPhone className='text-black inline m-1' />
+            <FaPhone className='inline m-1' />
             03-5566104
           </a>
         </div>
@@ -38,12 +38,12 @@ export default function ContactCard() {
           </a>
         </div>
         <div>
-          <FaLocationDot className='text-black inline m-1' />
+          <FaLocationDot className='inline m-1' />
           {COSMETICSEXPRESS_LOCATION_HE}
         </div>
         <div>
           <a href={`mailto:${COSMETICSEXPRESS_EMAIL}`} target='_blank'>
-            <FaEnvelope className='text-black inline m-1' />
+            <FaEnvelope className='inline m-1' />
             {COSMETICSEXPRESS_EMAIL}
           </a>
         </div>
@@ -62,49 +62,43 @@ export default function ContactCard() {
           לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
           פרטים ונחזור אליך בהקדם:
         </h4>
-        <div className='grid container:grid-cols-3 gap-2'>
+        <div className='grid place-items-center [&>*]:w-full container:grid-cols-3 gap-2'>
           <input
-            className='text-black p-1'
+            className='p-1'
             type='text'
             name='name'
             id='fullname'
             placeholder='שם מלא'
           />
           <input
-            className='text-black p-1'
+            className='p-1'
             type='tel'
             name='phone'
             id='phonenumber'
             placeholder='מספר טלפון'
           />
           <input
-            className='text-black p-1'
+            className='p-1'
             type='email'
             name='email'
             id='email'
             placeholder='אימייל'
           />
           <Select
+            className='h-8'
+            required
             options={options}
             name='interestedIn'
             id='interested-in'
             value='מעוניין ב:'
-            className='text-black'
           />
           <div className='flex gap-2 text-start'>
-            <input
-              required
-              type='checkbox'
-              id='tosconfirm'
-              className='bg-white w-5'
-            />
+            <input required type='checkbox' id='tosconfirm' className='w-5' />
             <label htmlFor='tosconfirm'>אני מסכימ.ה לתנאי השימוש</label>
           </div>
-          <input
-            type='submit'
-            value='שליחה'
-            className='bg-black text-white rounded-sm cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
-          />
+          <button className='bg-black text-white rounded-sm hover:underline hover:text-gold-300 transition container:hover:scale-105 duration-300 p-1'>
+            שליחה
+          </button>
         </div>
       </form>
 

@@ -12,7 +12,7 @@ import backgroundImage from '@assets/background.webp';
 import thumbnailDesktop from '@assets/thumbnail-desktop.webp';
 import thumbnailMobile from '@assets/thumbnail-mobile.webp';
 import ReadonlyTextField from '@components/ReadonlyTextField';
-import ContactCard from './components/ContactCard';
+import ContactCard from '@components/ContactCard';
 
 export default function App() {
   const calculatorProps = [
@@ -51,53 +51,56 @@ export default function App() {
     MAX_CONTAINER_WIDTH = 672;
 
   return (
-    <div
-      dir='auto'
-      className='grid place-items-center min-h-screen'
-      style={{
-        background: `url('${backgroundImage}')`,
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <header>
-        <picture>
-          <source
-            type='image/webp'
-            media={`(max-width: ${MAX_MOBILE_WIDTH}px)`}
-            width={MAX_MOBILE_WIDTH}
-            height={651}
-            srcSet={thumbnailMobile}
-          />
-          <img
-            src={thumbnailDesktop}
-            alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
-            width={MAX_CONTAINER_WIDTH}
-            height={343}
-          />
-        </picture>
-      </header>
-      <main className='grid place-items-center gap-2 w-full h-full [&>*]:max-w-screen-container py-4 max-container:p-4'>
-        <div className='flex gap-4 max-container:flex-col w-full'>
-          {calculatorProps.map((props) => (
-            <CalculatorBlock {...props} />
-          ))}
+    <>
+      <img
+        aria-hidden
+        src={backgroundImage}
+        className='fixed -z-10 top-0 w-screen h-screen object-cover'
+      />
+      <div
+        dir='auto'
+        className='flex flex-col justify-between items-center min-h-screen'
+      >
+        <div>
+          <header>
+            <picture>
+              <source
+                type='image/webp'
+                media={`(max-width: ${MAX_MOBILE_WIDTH}px)`}
+                width={MAX_MOBILE_WIDTH}
+                height={651}
+                srcSet={thumbnailMobile}
+              />
+              <img
+                src={thumbnailDesktop}
+                alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
+                width={MAX_CONTAINER_WIDTH}
+                height={343}
+              />
+            </picture>
+          </header>
+          <main className='flex flex-col items-center gap-2 w-full h-full [&>*]:max-w-screen-container py-4 max-container:p-4'>
+            <div className='flex gap-4 max-container:flex-col w-full'>
+              {calculatorProps.map((props) => (
+                <CalculatorBlock {...props} />
+              ))}
+            </div>
+            <section className='w-full flex flex-col items-center'>
+              <strong className='text-center text-sm'>
+                *המחשבון פועל בצורה לוגית חכמה וכולל התחשבות בזמני הפסקה ואורך
+                זמן טיפול ממוצע
+              </strong>
+              <h4>סה״כ רווח חודשי:</h4>
+              <ReadonlyTextField
+                isCurrency
+                state={totalMonthEarningsState}
+                className='bg-gold-gradient text-white border text-center rounded-sm m-1 p-1 w-full'
+              />
+            </section>
+          </main>
         </div>
-        <section className='w-full flex flex-col items-center'>
-          <strong className='text-center text-sm'>
-            *המחשבון פועל בצורה לוגית חכמה וכולל התחשבות בזמני הפסקה ואורך זמן
-            טיפול ממוצע
-          </strong>
-          <h4>סה״כ רווח חודשי:</h4>
-          <ReadonlyTextField
-            isCurrency
-            state={totalMonthEarningsState}
-            className='bg-gold-gradient text-white border text-center rounded-sm m-1 p-1 w-full'
-          />
-        </section>
-      </main>
-      <ContactCard />
-    </div>
+        <ContactCard />
+      </div>
+    </>
   );
 }
