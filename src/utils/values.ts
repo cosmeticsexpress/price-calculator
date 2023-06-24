@@ -57,7 +57,6 @@ export const DAY_EARNINGS_DIVISOR: { [Area in Areas]: number } = {
   ALL_BODY: 2.3,
 };
 
-export const COSMETICSEXPRESS_PHONE = '97235566104';
 export const COSMETICSEXPRESS_EMAIL = 'cosmeticsexpress01@gmail.com';
 export const COSMETICSEXPRESS_LOCATION_HE = 'רח׳ ההגנה 13, ראשון לציון';
 
@@ -66,7 +65,6 @@ export default {
   RANGES,
   WORKING_HOURS,
   DAY_EARNINGS_DIVISOR,
-  COSMETICSEXPRESS_PHONE,
   COSMETICSEXPRESS_EMAIL,
   COSMETICSEXPRESS_LOCATION_HE,
 };

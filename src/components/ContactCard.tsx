@@ -8,7 +8,6 @@ import Select from '@components/Select';
 import {
   COSMETICSEXPRESS_EMAIL,
   COSMETICSEXPRESS_LOCATION_HE,
-  COSMETICSEXPRESS_PHONE,
 } from '@utils/values';
 
 export default function ContactCard() {
@@ -27,13 +26,13 @@ export default function ContactCard() {
     <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
       <section className='flex max-container:flex-col flex-wrap gap-2'>
         <div>
-          <a href={`tel:${COSMETICSEXPRESS_PHONE}`} target='_blank'>
+          <a href='tel:97235566104' target='_blank'>
             <FaPhone className='text-black inline m-1' />
             03-5566104
           </a>
         </div>
         <div>
-          <a href={`https://wa.me/${COSMETICSEXPRESS_PHONE}`} target='_blank'>
+          <a href='https://wa.me/972509777076' target='_blank'>
             <FaWhatsapp className='text-white inline text-2xl ml-1 p-1 bg-green-600 rounded-full aspect-square overflow-visible' />
             שלח הודעה בוואטסאפ
           </a>
@@ -56,6 +55,9 @@ export default function ContactCard() {
         }`}
         method='POST'
       >
+        <input type='hidden' name='_next' value={window.location.href} />
+        <input type='hidden' name='_captcha' value='false' />
+
         <h4 className='mb-4'>
           לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
           פרטים ונחזור אליך בהקדם:
