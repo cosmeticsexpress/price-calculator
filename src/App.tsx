@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+
 import CalculatorBlock from '@components/CalculatorBlock';
 import {
   smallAreasStates,
@@ -11,6 +12,7 @@ import backgroundImage from '@assets/background.webp';
 import thumbnailDesktop from '@assets/thumbnail-desktop.webp';
 import thumbnailMobile from '@assets/thumbnail-mobile.webp';
 import ReadonlyTextField from '@components/ReadonlyTextField';
+import ContactCard from './components/ContactCard';
 
 export default function App() {
   const calculatorProps = [
@@ -45,43 +47,44 @@ export default function App() {
     } satisfies MinMax;
   });
 
+  const MAX_MOBILE_WIDTH = 425,
+    MAX_CONTAINER_WIDTH = 672;
+
   return (
-    <main
+    <div
       dir='auto'
+      className='grid place-items-center min-h-screen'
       style={{
         background: `url('${backgroundImage}')`,
         backgroundAttachment: 'fixed',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
-      className='flex flex-col items-center w-full h-full min-h-screen [&>*]:max-w-2xl'
     >
-      <picture>
-        <source
-          type='image/webp'
-          media='(max-width: 425px)'
-          width={425}
-          height={651}
-          srcSet={thumbnailMobile}
-        />
-        <img
-          src={thumbnailDesktop}
-          alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
-          width={672}
-          height={343}
-        />
-      </picture>
-
-      <div className='py-4 max-[672px]:p-4 w-full h-full flex flex-col items-center gap-2'>
-        <div className='flex gap-4 max-[672px]:flex-col max-[425px]:w-full w-full'>
+      <header>
+        <picture>
+          <source
+            type='image/webp'
+            media={`(max-width: ${MAX_MOBILE_WIDTH}px)`}
+            width={MAX_MOBILE_WIDTH}
+            height={651}
+            srcSet={thumbnailMobile}
+          />
+          <img
+            src={thumbnailDesktop}
+            alt='Cosmetics Express: מחשבון רווחים לטיפולי הסרת שיער בלייזר'
+            width={MAX_CONTAINER_WIDTH}
+            height={343}
+          />
+        </picture>
+      </header>
+      <main className='grid place-items-center gap-2 w-full h-full [&>*]:max-w-screen-container py-4 max-container:p-4'>
+        <div className='flex gap-4 max-container:flex-col w-full'>
           {calculatorProps.map((props) => (
             <CalculatorBlock {...props} />
           ))}
         </div>
-        <section
-          className='w-full flex flex-col items-center'
-          title='סה״כ רווח חודשי:'
-        >
+        <section className='w-full flex flex-col items-center'>
           <strong className='text-center text-sm'>
             *המחשבון פועל בצורה לוגית חכמה וכולל התחשבות בזמני הפסקה ואורך זמן
             טיפול ממוצע
@@ -93,7 +96,8 @@ export default function App() {
             className='bg-gold-gradient text-white border text-center rounded-sm m-1 p-1 w-full'
           />
         </section>
-      </div>
-    </main>
+      </main>
+      <ContactCard />
+    </div>
   );
 }

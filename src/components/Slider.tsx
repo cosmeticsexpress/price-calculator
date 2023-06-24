@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState, HTMLAttributes } from 'react';
 import { useRecoilState, RecoilState } from 'recoil';
 import { Range, getTrackBackground, Direction } from 'react-range';
 
-interface SliderProps {
+interface SliderProps extends HTMLAttributes<HTMLElement> {
   min: number;
   max: number;
   state: RecoilState<number>;
