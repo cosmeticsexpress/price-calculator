@@ -60,6 +60,7 @@ export default function ContactCard() {
           פרטים ונחזור אליך בהקדם:
         </h4>
         <div className='grid container:grid-cols-3 gap-2'>
+          <input type='hidden' name='_captcha' value='false' />
           <input
             className='text-black p-1'
             type='text'
