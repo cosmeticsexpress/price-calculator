@@ -55,12 +55,14 @@ export default function ContactCard() {
         }`}
         method='POST'
       >
+        <input type='hidden' name='_next' value={window.location.href} />
+        <input type='hidden' name='_captcha' value='false' />
+
         <h4 className='mb-4'>
           לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
           פרטים ונחזור אליך בהקדם:
         </h4>
         <div className='grid container:grid-cols-3 gap-2'>
-          <input type='hidden' name='_captcha' value='false' />
           <input
             className='text-black p-1'
             type='text'
