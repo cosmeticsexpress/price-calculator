@@ -24,8 +24,8 @@ export default function ContactCard() {
   ];
 
   return (
-    <article className='bg-gold-400 w-full text-black font-rubik py-4'>
-      <section className='flex max-container:flex-col flex-wrap gap-2 p-2'>
+    <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
+      <section className='flex max-container:flex-col flex-wrap gap-2'>
         <div>
           <a href={`tel:${COSMETICSEXPRESS_PHONE}`} target='_blank'>
             <FaPhone className='text-black inline m-1' />
@@ -50,7 +50,7 @@ export default function ContactCard() {
         </div>
       </section>
 
-      <section className='p-2 text-center'>
+      <section>
         <h4 className='mb-4'>
           לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
           פרטים ונחזור אליך בהקדם:
@@ -106,6 +106,10 @@ export default function ContactCard() {
           />
         </form>
       </section>
-    </article>
+
+      <section>
+        <small>האתר פותח על ידי נעם בכר</small>
+      </section>
+    </footer>
   );
 }
