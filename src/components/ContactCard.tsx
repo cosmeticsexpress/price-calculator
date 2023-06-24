@@ -50,18 +50,17 @@ export default function ContactCard() {
         </div>
       </section>
 
-      <section>
+      <form
+        action={`https://formsubmit.co/${
+          import.meta.env.VITE_FORM_EMAIL ?? COSMETICSEXPRESS_EMAIL
+        }`}
+        method='POST'
+      >
         <h4 className='mb-4'>
           לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
           פרטים ונחזור אליך בהקדם:
         </h4>
-        <form
-          className='grid container:grid-cols-3 gap-2'
-          action={`https://formsubmit.co/${
-            import.meta.env.VITE_FORM_EMAIL ?? COSMETICSEXPRESS_EMAIL
-          }`}
-          method='POST'
-        >
+        <div className='grid container:grid-cols-3 gap-2'>
           <input
             className='text-black p-1'
             type='text'
@@ -104,8 +103,8 @@ export default function ContactCard() {
             value='שליחה'
             className='bg-black text-white rounded-sm cursor-pointer hover:underline hover:text-gold-300 transition-colors duration-300 p-1'
           />
-        </form>
-      </section>
+        </div>
+      </form>
 
       <section>
         <small>האתר פותח על ידי נעם בכר</small>

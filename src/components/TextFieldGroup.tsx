@@ -18,8 +18,9 @@ export default function TextFieldGroup({ children }: TextFieldGroupProps) {
           key={key}
           className='[&>output]:last:bg-gold-gradient [&>output]:last:text-white flex flex-col justify-between items-center w-full text-center'
         >
-          <h4>{label}:</h4>
+          <label htmlFor={key}>{label}:</label>
           <ReadonlyTextField
+            id={key}
             state={state}
             isCurrency={isCurrency}
             className='border rounded-sm p-1 bg-white text-center w-full'

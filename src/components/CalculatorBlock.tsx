@@ -89,10 +89,7 @@ export default function CalculatorBlock({
   ];
 
   return (
-    <section
-      className='border rounded-md bg-gray-50 p-3 flex flex-col justify-between gap-3 items-center w-full'
-      title={title}
-    >
+    <section className='border rounded-md bg-gray-50 p-3 flex flex-col justify-between gap-3 items-center w-full'>
       <div className='text-center'>
         <h2 className='text-gold-gradient font-semibold text-2xl'>{title}</h2>
         <h3 className='text-lg font-semibold'>

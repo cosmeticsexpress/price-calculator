@@ -85,10 +85,7 @@ export default function App() {
               <CalculatorBlock {...props} />
             ))}
           </div>
-          <section
-            className='w-full flex flex-col items-center'
-            title='סה״כ רווח חודשי:'
-          >
+          <section className='w-full flex flex-col items-center'>
             <strong className='text-center text-sm'>
               *המחשבון פועל בצורה לוגית חכמה וכולל התחשבות בזמני הפסקה ואורך זמן
               טיפול ממוצע

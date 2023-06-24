@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { HTMLAttributes, useState } from 'react';
 
-interface P extends HTMLAttributes<HTMLSelectElement> {
+interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
   options?: string[] | { label: string; value: string }[];
   value?: string;
   name?: string;
@@ -15,7 +15,7 @@ export default function Select({
   id,
   name,
   title,
-}: P) {
+}: SelectProps) {
   const [currentValue, setValue] = useState(value);
   return (
     <select
