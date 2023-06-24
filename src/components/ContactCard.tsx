@@ -9,7 +9,7 @@ import {
   COSMETICSEXPRESS_EMAIL,
   COSMETICSEXPRESS_LOCATION_HE,
   COSMETICSEXPRESS_PHONE,
-} from '@/utils/values';
+} from '@utils/values';
 
 export default function ContactCard() {
   const options = [
@@ -65,27 +65,27 @@ export default function ContactCard() {
           <input
             className='text-black p-1'
             type='text'
-            name='שם מלא'
+            name='name'
             id='fullname'
             placeholder='שם מלא'
           />
           <input
             className='text-black p-1'
             type='tel'
-            name='מספר טלפון'
+            name='phone'
             id='phonenumber'
             placeholder='מספר טלפון'
           />
           <input
             className='text-black p-1'
             type='email'
-            name='אימייל'
+            name='email'
             id='email'
             placeholder='אימייל'
           />
           <Select
             options={options}
-            name='מעוניין ב־'
+            name='interestedIn'
             id='interested-in'
             value='מעוניין ב:'
             className='text-black'
