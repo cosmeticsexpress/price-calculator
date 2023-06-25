@@ -101,10 +101,6 @@ export default function ContactCard() {
           </button>
         </div>
       </form>
-
-      <section>
-        <small>האתר פותח על ידי נעם בכר</small>
-      </section>
     </footer>
   );
 }
