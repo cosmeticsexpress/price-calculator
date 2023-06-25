@@ -19,7 +19,7 @@ export default function Select({
   title,
   required = false,
 }: SelectProps) {
-  const [currentValue, setValue] = useState(value);
+  const [currentValue, setValue] = useState('');
   return (
     <select
       required={required}
@@ -31,7 +31,7 @@ export default function Select({
       style={style}
       onChange={(e) => setValue(e.target.value)}
     >
-      <option value={value} disabled hidden>
+      <option value='' disabled hidden>
         {value}
       </option>
       {options?.map((option) => (
