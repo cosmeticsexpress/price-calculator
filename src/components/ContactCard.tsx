@@ -65,6 +65,7 @@ export default function ContactCard() {
         <div className='grid place-items-center [&>*]:w-full container:grid-cols-3 gap-2'>
           <input
             className='p-1'
+            required
             type='text'
             name='name'
             id='fullname'
@@ -72,6 +73,7 @@ export default function ContactCard() {
           />
           <input
             className='p-1'
+            required
             type='tel'
             name='phone'
             id='phonenumber'
@@ -79,6 +81,7 @@ export default function ContactCard() {
           />
           <input
             className='p-1'
+            required
             type='email'
             name='email'
             id='email'
