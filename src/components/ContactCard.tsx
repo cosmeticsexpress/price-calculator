@@ -34,7 +34,7 @@ export default function ContactCard() {
         <div>
           <a href='https://wa.me/972509777076' target='_blank'>
             <FaWhatsapp className='text-white inline text-2xl ml-1 p-1 bg-green-600 rounded-full aspect-square overflow-visible' />
-            שלח הודעה בוואטסאפ
+            שליחת הודעה בוואטסאפ
           </a>
         </div>
         <div>
