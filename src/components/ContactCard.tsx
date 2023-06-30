@@ -22,6 +22,13 @@ export default function ContactCard() {
     'Scul Up Platinum',
   ];
 
+  const inputNames = {
+    name: 'name',
+    phone: 'phone',
+    email: 'email',
+    interestedIn: 'interestedIn',
+  };
+
   return (
     <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
       <section className='flex max-container:flex-col flex-wrap gap-2 text-start w-full'>
@@ -67,7 +74,7 @@ export default function ContactCard() {
             className='p-1'
             required
             type='text'
-            name='name'
+            name={inputNames.name}
             id='fullname'
             placeholder='שם מלא'
           />
@@ -75,7 +82,7 @@ export default function ContactCard() {
             className='p-1'
             required
             type='tel'
-            name='phone'
+            name={inputNames.phone}
             id='phonenumber'
             placeholder='מספר טלפון'
           />
@@ -83,7 +90,7 @@ export default function ContactCard() {
             className='p-1'
             required
             type='email'
-            name='email'
+            name={inputNames.email}
             id='email'
             placeholder='אימייל'
           />
@@ -91,7 +98,7 @@ export default function ContactCard() {
             className='h-8'
             required
             options={options}
-            name='interestedIn'
+            name={inputNames.interestedIn}
             id='interested-in'
             value='מעוניין ב:'
           />
