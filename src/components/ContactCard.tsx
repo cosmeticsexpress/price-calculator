@@ -60,6 +60,25 @@ export default function ContactCard() {
         action={`https://formsubmit.co/${
           import.meta.env.VITE_FORM_EMAIL ?? COSMETICSEXPRESS_EMAIL
         }`}
+        onSubmit={async (e: React.SyntheticEvent<HTMLFormElement>) => {
+          const { elements } = e.target as HTMLFormElement;
+
+          // ❗ This 👇 is a temporary URL for testing. Replace with correct one later.
+          const myKaveretUrl = new URL(
+            `http://cloud.kaveret.biz/external/landing-page/create-lead/08b759a47f5de48d10e7`
+          );
+
+          Object.values(inputNames).forEach((name) =>
+            myKaveretUrl.searchParams.append(
+              name,
+              (elements.namedItem(name) as HTMLInputElement)?.value
+            )
+          );
+
+          await fetch(myKaveretUrl, {
+            mode: 'no-cors',
+          });
+        }}
         method='POST'
       >
         <input type='hidden' name='_next' value={window.location.href} />
