@@ -10,6 +10,8 @@ import {
   COSMETICSEXPRESS_LOCATION_HE,
 } from '@utils/values';
 
+const { VITE_FORMSUBMIT_EMAIL, VITE_KAVERET_CREATE_LEAD_URL } = import.meta.env;
+
 export default function ContactCard() {
   const options = [
     'Eos Ice Pro',
@@ -57,27 +59,20 @@ export default function ContactCard() {
       </section>
 
       <form
-        action={`https://formsubmit.co/${
-          import.meta.env.VITE_FORM_EMAIL ?? COSMETICSEXPRESS_EMAIL
-        }`}
-        onSubmit={async (e: React.SyntheticEvent<HTMLFormElement>) => {
+        action={`https://formsubmit.co/${VITE_FORMSUBMIT_EMAIL}`}
+        onSubmit={async (e) => {
           const { elements } = e.target as HTMLFormElement;
 
-          const myKaveretUrl = new URL(
-            import.meta.env.VITE_KAVERET_WEBHOOK_URL ??
-              `http://cloud.kaveret.biz/external/landing-page/create-lead/2e084524bbef774d510e`
-          );
+          const kaveretUrl = new URL(VITE_KAVERET_CREATE_LEAD_URL);
 
           Object.values(inputNames).forEach((name) =>
-            myKaveretUrl.searchParams.append(
+            kaveretUrl.searchParams.append(
               name === inputNames.interestedIn ? 'extraData' : name,
               (elements.namedItem(name) as HTMLInputElement)?.value
             )
           );
 
-          await fetch(myKaveretUrl, {
-            mode: 'no-cors',
-          });
+          await fetch(kaveretUrl, { mode: 'no-cors' });
         }}
         method='POST'
       >
