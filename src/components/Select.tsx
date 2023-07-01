@@ -4,26 +4,25 @@ import { HTMLAttributes, useState } from 'react';
 interface SelectProps
   extends HTMLAttributes<HTMLSelectElement | HTMLInputElement> {
   options?: string[] | { label: string; value: string }[];
-  value?: string;
+  defaultValue?: string;
   name?: string;
   required?: boolean;
 }
 
 export default function Select({
   options,
-  value,
+  defaultValue,
   className,
   style,
   id,
   name,
-  title,
   required = false,
 }: SelectProps) {
   const [currentValue, setValue] = useState('');
   return (
     <select
       required={required}
-      title={title}
+      title={defaultValue}
       id={id}
       name={name}
       value={currentValue}
@@ -32,7 +31,7 @@ export default function Select({
       onChange={(e) => setValue(e.target.value)}
     >
       <option value='' disabled hidden>
-        {value}
+        {defaultValue}
       </option>
       {options?.map((option) => (
         <option
