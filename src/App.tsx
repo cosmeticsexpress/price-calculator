@@ -102,7 +102,13 @@ export default function App() {
         </div>
         <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
           <ContactDetails />
-          <ContactForm />
+          <section>
+            <h4 className='mb-4'>
+              לקביעת פגישה אצלנו או אצלך בקליניקה ללא כל התחייבות הקליקי והשאירי
+              פרטים ונחזור אליך בהקדם:
+            </h4>
+            <ContactForm />
+          </section>
         </footer>
       </div>
     </>
