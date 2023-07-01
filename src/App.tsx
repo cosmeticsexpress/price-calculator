@@ -12,7 +12,8 @@ import backgroundImage from '@assets/background.webp';
 import thumbnailDesktop from '@assets/thumbnail-desktop.webp';
 import thumbnailMobile from '@assets/thumbnail-mobile.webp';
 import ReadonlyTextField from '@components/ReadonlyTextField';
-import ContactCard from '@components/ContactCard';
+import ContactDetails from '@components/ContactDetails';
+import ContactForm from '@components/ContactForm';
 
 export default function App() {
   const calculatorProps = [
@@ -99,7 +100,10 @@ export default function App() {
             </section>
           </main>
         </div>
-        <ContactCard />
+        <footer className='bg-gold-400 w-full text-black font-rubik py-4 px-2 grid place-items-center gap-4 text-center [&>*]:max-w-screen-container'>
+          <ContactDetails />
+          <ContactForm />
+        </footer>
       </div>
     </>
   );
