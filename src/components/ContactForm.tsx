@@ -49,7 +49,6 @@ export default function ContactForm() {
         required
         type='text'
         name={inputNames.name}
-        id='fullname'
         placeholder='שם מלא'
       />
       <input
@@ -57,7 +56,6 @@ export default function ContactForm() {
         required
         type='tel'
         name={inputNames.phone}
-        id='phonenumber'
         placeholder='מספר טלפון'
       />
       <input
@@ -65,7 +63,6 @@ export default function ContactForm() {
         required
         type='email'
         name={inputNames.mail}
-        id='email'
         placeholder='אימייל'
       />
       <Select
@@ -73,7 +70,6 @@ export default function ContactForm() {
         required
         options={options}
         name={inputNames.interestedIn}
-        id='interested-in'
         defaultValue='מעוניין ב:'
       />
       <div className='flex gap-2 text-start'>
