@@ -70,7 +70,7 @@ export default function ContactCard() {
 
           Object.values(inputNames).forEach((name) =>
             myKaveretUrl.searchParams.append(
-              name,
+              name === inputNames.interestedIn ? 'extraData' : name,
               (elements.namedItem(name) as HTMLInputElement)?.value
             )
           );
