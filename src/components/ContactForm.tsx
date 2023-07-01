@@ -74,7 +74,7 @@ export default function ContactForm() {
         options={options}
         name={inputNames.interestedIn}
         id='interested-in'
-        value='מעוניין ב:'
+        defaultValue='מעוניין ב:'
       />
       <div className='flex gap-2 text-start'>
         <input required type='checkbox' id='tosconfirm' className='w-5' />
