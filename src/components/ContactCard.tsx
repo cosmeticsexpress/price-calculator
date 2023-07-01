@@ -63,9 +63,9 @@ export default function ContactCard() {
         onSubmit={async (e: React.SyntheticEvent<HTMLFormElement>) => {
           const { elements } = e.target as HTMLFormElement;
 
-          // ❗ This 👇 is a temporary URL for testing. Replace with correct one later.
           const myKaveretUrl = new URL(
-            `http://cloud.kaveret.biz/external/landing-page/create-lead/08b759a47f5de48d10e7`
+            import.meta.env.VITE_KAVERET_WEBHOOK_URL ??
+              `http://cloud.kaveret.biz/external/landing-page/create-lead/2e084524bbef774d510e`
           );
 
           Object.values(inputNames).forEach((name) =>
