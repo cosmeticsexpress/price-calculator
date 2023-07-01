@@ -25,7 +25,7 @@ export default function ContactCard() {
   const inputNames = {
     name: 'name',
     phone: 'phone',
-    email: 'email',
+    mail: 'mail',
     interestedIn: 'interestedIn',
   };
 
@@ -109,7 +109,7 @@ export default function ContactCard() {
             className='p-1'
             required
             type='email'
-            name={inputNames.email}
+            name={inputNames.mail}
             id='email'
             placeholder='אימייל'
           />
